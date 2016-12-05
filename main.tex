@@ -1,0 +1,66 @@
+\documentclass{ut-thesis}
+
+\degree{Doctor of Philosophy}
+\department{Molecular Genetics}
+\gradyear{2017}
+\author{Jochen Weile}
+\title{An atlas of variant effects in human disease genes}
+
+
+%% List only down to subsections in the table of contents;
+%% 0=chapter, 1=section, 2=subsection, 3=subsubsection, etc.
+\setcounter{tocdepth}{2}
+
+%% Make each page fill up the entire page.
+\flushbottom
+
+
+%%%%%%%%%%%%      MAIN  DOCUMENT      %%%%%%%%%%%%
+
+\begin{document}
+
+\begin{preliminary}
+
+\maketitle
+
+%% There should be NOTHING between the title page and abstract.
+%% However, if your document is two-sided and you want the abstract
+%% _not_ to appear on the back of the title page, then uncomment the
+%% following line.
+%\cleardoublepage
+
+\begin{abstract}
+%% (At most 350 words for Ph.D.)
+
+\end{abstract}
+
+%\begin{dedication}
+
+%\end{dedication}
+
+\begin{acknowledgements}
+The author gratefully acknowledges funding by the National Institutes of Health, the Canadian Excellence Research Chair, the Canadian Center for Advanced Research and the Ontario Ministry of Research and Innovation. The author would also like to thank Fritz Roth, Atina Cote, Jennifer Knapp, Song Sun, Marta Verby, Yingzhou Wu, Cassandra Wong, Fan Yang, Carles Pons, Natascha van Lieshout, Anjali Gopal,  Guihong Tan, Joseph Mellor, Brenda Andrews, Charles Boone, Nidhi Sahni, Marc Vidal, and David Hill for their collaboration.
+\end{acknowledgements}
+
+\tableofcontents
+
+%\listoftables
+
+%\listoffigures
+
+%% You can add commands here to generate any other material that belongs
+%% in the head matter (for example, List of Plates, Index of Symbols, or
+%% List of Appendices).
+
+%% End of the preliminary sections: reset page style and numbering.
+\end{preliminary}
+
+
+\include{introduction}
+
+%% This adds a line for the Bibliography in the Table of Contents.
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{plain}
+\bibliography{thesis}
+
+\end{document}
