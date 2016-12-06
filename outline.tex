@@ -1,0 +1,79 @@
+\documentclass[12pt]{article}
+\usepackage[letterpaper, portrait, margin=2cm]{geometry}
+%	options include 12pt or 11pt or 10pt
+%	classes include article, report, book, letter, thesis
+
+% \title{This is the title}
+% \author{Author One \\ Author Two}
+% \date{29 February 2004}
+
+\renewcommand{\labelenumii}{\theenumii}
+\renewcommand{\theenumii}{\theenumi.\arabic{enumii}.}
+
+\renewcommand{\labelenumiii}{\theenumiii}
+\renewcommand{\theenumiii}{\theenumii\arabic{enumiii}.}
+
+\renewcommand{\labelenumiv}{\theenumiv}
+\renewcommand{\theenumiv}{\theenumiii\arabic{enumiv}.}
+
+\begin{document}
+% \maketitle
+\section*{Thesis outline: An atlas of variant effects in human disease genes}
+\begin{enumerate}
+	\item Introduction
+	\begin{enumerate}
+		\item Motivation: The Genotype-Phenotype problem
+		\item \textit{In silico} approaches to variant function assessment
+		\item Functional complementation
+		\item Binary protein-protein interactions and Yeast-2-Hybrid
+		\item Deep Mutational scanning
+		\item Edgetics and Edgotyping
+		\item Background: The Sumoylation Pathway
+	\end{enumerate}
+	\item Data chapter I: A framework for comprehensive and high-fidelity Deep Mutational Scanning
+	\begin{enumerate}
+		\item Introduction
+		\item Results
+		\begin{enumerate}
+			\item A barcode-based Deep Mutational Scanning strategy
+			\begin{enumerate}
+				\item POPCode: A Precision Oligo Pool Codon alteration mutagenesis method
+				\item KiloSEQ: A highly multiplexed amiplicon sequencing method
+				\item A barcoded-based functional map of UBE2I
+			\end{enumerate}
+			\item A complete functional map of UBE2I
+			\begin{enumerate}
+				\item An alternative strategy for DMS via tiled regional sequencing
+				\item Imputation and regularization of missing or less accurate data
+			\end{enumerate}
+			\item Evaluation and validation of the UBE2I map
+		\end{enumerate}
+		\item Discussion
+	\end{enumerate}
+	\item Data chapter II: Expanding the atlas of variant effects in human disease genes
+	\begin{enumerate}
+		\item Introduction
+		\item Results
+		\begin{enumerate}
+			\item Functional maps of SUMO1 and its cognate E2 enable biophysical insights
+			\begin{enumerate}
+				\item Functional maps recapitulate known biology
+				\item Substrate specificity shifts and E2 hyperactivity
+				\item Intragenic epistasis and compensatory mutations
+			\end{enumerate}
+			\item Functional maps of three human disease genes
+			\begin{enumerate}
+				\item A calmodulin map excels in classifying disease variants
+				\item A thiamine pyrophosphokinase map reflects a recessive phenotype
+				\item A functional map of neuronal calcium sensor-1
+			\end{enumerate}
+		\end{enumerate}
+		\item Discussion
+	\end{enumerate}
+	\item Conclusion
+	\begin{enumerate}
+		\item Discussion
+		\item Outlook
+	\end{enumerate}
+\end{enumerate}
+\end{document}
