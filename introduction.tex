@@ -19,7 +19,7 @@ Given the much greater difficulty of interpreting non-coding regions, clinical a
 
 A number of algorithms exist that offer predictions as to the deleteriousness of mutations, the most prominent ones being PolyPhen-2~\cite{adzhubei_method_2010}, SIFT~\cite{SIFT} and PROVEAN~\cite{choi_fast_2012}. PolyPhen-2 uses a machine learning method using evolutionary conservation and protein structural features. It uses a set of previously reported pathogenic alleles as a positive training set and differences between human genes and their mammalian homologues as a negative training set. SIFT (Sorting Intolerant From Tolerant) by contrast only uses evolutionary conservation. The tool uses multiple sequence alignments to calculate position-specific score matrices for each gene which are then normalized and transformed into probability values. PROVEAN (PROtein Variation Effect ANalyzer) similarly only takes into account sequence alignments. However, rather than just computing a position-specific score, PROVEAN calculates the difference in alignment quality between using the wildtype or variant sequence against clusters of homologous sequences. The average distance is then interpreted as indicative of the deleteriousness of the variant. 
 
-While the three tools succeed in making good predictions, their reliability is unfortunately still not high enough to serve as a basis of clinical decision making. Song Sun and other members of the Roth Lab recently performed an independent comparison of these tools on a set of well established disease-causing variants as well as rare polymorphisms with no known disease association~\cite{sun_extended_2016}. A high precision (the fraction of correct classifications out of all positive classifications) can be considered especially important when considering taking clinical action based on a prediction. When compared at a minimum precision level of 90\%, PolyPhen-2 and PROVEAN only reach a sensitivity of 19\% and 21\% , respectively (where sensitivity is defined as the fraction of correct classifications out of all real existing disease variants). SIFT was not even capable of achieving 90\% precision at any score threshold.
+While the three tools succeed in making good predictions, their reliability is unfortunately still not high enough to serve as a basis of clinical decision making. Song Sun and other members of the Roth Lab recently performed an independent comparison of these tools on a set of well established disease-causing variants as well as rare polymorphisms with no known disease association~\cite{sun_extended_2016}. A high precision (the fraction of correct classifications out of all positive classifications) can be considered especially important when considering taking clinical action based on a prediction. When compared at a minimum precision level of 90\%, PolyPhen-2 and PROVEAN only reach a sensitivity of 19\% and 21\%, respectively (where sensitivity is defined as the fraction of correct classifications out of all real existing disease variants). SIFT was not even capable of achieving 90\% precision at any score threshold.
 
 \section{Laboratory approaches to variant function assessment}
 
@@ -37,11 +37,79 @@ Nonetheless, an assay that can measure the overall functionality of a protein wi
 
 The only major drawback of yeast complementation is that currently only 60 human genes have been found to be amenable to the assay~\cite{sun_extended_2016}. %mention future outlook on human cell complementation and CRISPR? 
 
+%Mention Phage display?
+
 
 \section{Deep Mutational Scanning}
 
-Complementation and Y2H promise to be useful tools in the classification of variants of uncertain significance. Yet applying them to retroactively test variants only once they have been found in the clinic would be a slow process. Instead, a proactive approach could prove to be more useful: Building an atlas of the functional effects of all possible variants before they are even seen in the clinic. This would require a massive parallelization of the assays. Indeed such efforts have previously been described. Fowler and Fields have pioneered a technology called Deep Mutational Scanning (DMS)~\cite{fowler_high-resolution_2010}. The original method used phage display as a method of selection on an exhaustive library of mutant proteins followed by deep sequencing to identify which mutant proteins were enriched in the process. While the original method was developed as an extension to alanine scanning~\cite{alanineScanning} in the pursuit of biochemical insights, it can certainly be adapted to work with other selection methods such as Y2H and complementation. Indeed, \todo{Who?} and colleagues have recently adapted it to the use of complementation as a means of selection.
+Complementation and Y2H promise to be useful tools in the classification of variants of uncertain significance. Yet applying them to retroactively test variants only once they have been found in the clinic would be a slow process. Instead, a proactive approach could prove to be more useful: Building an atlas of the functional effects of all possible variants before they are even seen in the clinic. This would require a massive parallelization of the assays. Indeed such parallelization efforts have previously been described, albeit not for the classification of VUS. Fowler and Fields have pioneered a technology called Deep Mutational Scanning (DMS)~\cite{fowler_high-resolution_2010}, which can be thought of as a natural extension to Alanine Scanning~\cite{AlanineScanning}, and has since inspired a fair number of similar efforts by other groups\cite{EverythingDMS}.
+Deep Mutational Scanning can be broken down into a number of experimental and computational steps: (1) Mutagenesis; (2) Library construction; (3) Selection of functional mutants; (4) Sequencing of the pre- and post-selection libraries; and (5) Statistical analysis to determine the quantitative enrichment resulting from the selection. 
 
+\begin{table}[h!]
+	\centering
+	\caption{Experimental steps in Deep Mutational Scanning}
+	\label{table:DMSphases}
+	\begin{tabular}{l p{10cm}}
+	%\hline
+	\textbf{Step}                & \textbf{Options} \\ \hline \hline
+	Step 1: Mutagenesis          & Error-prone PCR\\ %\hline
+	Step 2: Library construction & Phage\\ %\hline
+	Step 3: Selection            & Complementation, Y2H, Phage display, Viral replication\\ %\hline
+	Step 4: Sequencing           & BarSEQ, Deep Sequencing\\ %\hline
+	Step 5: Analysis             & Enrich2\\ %\hline
+	\end{tabular}
+\end{table}
+
+The first step---mutagenesis---has been performed in different ways by different groups. The simplest method is error-prone PCR amplification\cite{oxPCRetc}. While this has the advantage of being an inexpensive and facile procedure, it will only result in the generation of point mutations and as such will not generate all possible amino acid replacements. One may argue that the evaluation of VUS does not require insight into mutations outside of this set, however at the expense of potentially valuable biochemical insights. Another method often employed is Kunkel mutagenesis~\cite{Kunkel}. Originally developed as a method for simple site-directed mutagenesis, it can be scaled up to address a combination of multiple sites at once. It uses a special strain of \species{E.~coli} that has been modified to produce high levels of uradine and lacks the ability to excise uracil bases from DNA. A phage vector carrying the desired template sequence is transfected into the cells resulting in its replication with a high uracil incorporation rate. The thus uracilated template can be PCR amplified with primers containing the mutations of interest and subsequently amplified in regular \species{E.~coli} which will degrade the uracilated template, thus enriching the mutant copies. %More 
+
+Library construction is the second step in any DMS experiment. The choice of method in this step is dependent on the type of selection and sequencing used in the later steps. Some methods require mutants to be tagged with molecular barcodes, i.e. short unique DNA sequences inserted at a known location that allow identification of a molecule with just a single sequencing read. While the use of barcodes greatly simplifies the readout of the selection result it does require that the contents of the library are catalogued at the time of construction.
+
+Step three of a DMS procedure is the selection of mutants that pass a given assay. In most cases, assays are designed to test for protein protein interactions, for example via Y2H or phage display. In other cases it may be overall protein function, as measured by complementation or in cases of viral proteins, the ability of the virus to replicate.
+
+The fourth step in the procedure is sequencing. 
+
+%The original method used phage display as a method of selection on an exhaustive library of mutant proteins followed by deep sequencing to identify which mutant proteins were enriched in the process. While the original method was developed as an extension to alanine scanning~\cite{alanineScanning} in the pursuit of biochemical insights, it can certainly be adapted to work with other selection methods such as Y2H and complementation. Indeed, \todo{Who?} and colleagues have recently adapted it to the use of complementation as a means of selection.
+
+\begin{landscape}
+\begin{table}[h!]
+	\centering
+	\caption{Previous DMS studies}
+	\label{table:DMSstudies}
+	\begin{tabular}{l l l l l l l}
+	\textbf{Year} & \textbf{Authors} & \textbf{Protein} & \textbf{Region} & \textbf{Saturation} & \textbf{Selection} \\ \hline \hline
+2010 & Fowler~\textit{et al.}~\cite{fowler_high-resolution_2010} & YAP65 & WW domain & Very high & Phage display \\  
+2010 & Ernst~\textit{et al.} & Synthetic protein & PDZ domain & ? & Phage display \\ 
+2012 & Fujino~\textit{et al.} & Fab antibody fragment & fragment & Very high & Ribodisplay \\ 
+2012 & Adkar~\textit{et al.} & Ccdb & whole protein & ? & Toxin activity in \species{E.~coli}\\ 
+2012 & McLaughlin~\textit{et al.} & PSD95 & PDZ domain & Very high & B2H+FACS (\species{E.~coli})\\ 
+2012 & Schlinkmann~\textit{et al.} & GPCR & whole protein & High & FACS (\species{E.~coli})\\ 
+2012 & Whitehead~\textit{et al.} & Synthetic protein & whole protein & Very high & Yeast display \\ 
+2012 & Traxlmayr~\textit{et al.} & IgG1 & CH2/CH3 domains & ? & Yeast display \\ 
+2012 & Wu~\textit{et al.} & Neuraminidase & SNP accessible & ? & Drug resistance (H1N1)\\ 
+2013 & Roscoe~\textit{et al.} & Ubiquitin & whole protein & High & Yeast growth\\ 
+2013 & Starita~\textit{et al.} & Ub.E3 E4B & whole protein & Low & Phage display\\ 
+2013 & Procko~\textit{et al.}  & Synthetic protein & 60AA & Very high & Yeast display\\ 
+2013 & Tinberg~\textit{et al.}  & Synthetic protein & 40AA & High & Yeast display\\ 
+2013 & Jiang~\textit{et al.}  & Hsp90 & substrate binding loop & Very high & Yeast complementation\\ 
+2013 & Kim~\textit{et al.}  & Mat alpha  & degron region & ? & Yeast growth\\ 
+2013 & Melamed~\textit{et al.}  & Pab1 & RRM domain & High & Yeast complementation\\ 
+2013 & Forsyth~\textit{et al.}  & Antibody for EGFR & whole protein & Very high & Human cell display\\ 
+2013 & Wagenaar~\textit{et al.}  & BRAF & 77 Aas & ? & Drug resistance (Human)\\ 
+2014 & Firnberg~\textit{et al.}  & TEM1-beta lactamase & Whole protein & High & Drug resistance (\species{E.~coli})\\ 
+2014 & Olson~\textit{et al.}  & G protein (GB1) & IgG-binding domain & High & RNA display\\ 
+2014 & Melnikov~\textit{et al.}  & APH(3′)II (kinase) & whole protein & Very high & Drug resistance (\species{E.~coli})\\ 
+2014 & Thyagarajan~\textit{et al.}  & hemagglutinin & whole protein & ? & Viral replication (H1N1)\\ 
+2015 & Stiffler~\textit{et al.}  & TEM1 Beta-lactamase & whole protein & Very high & \species{E.~coli} growth\\ 
+2015 & Doud~\textit{et al.}  & influenza nucleoprotein & whole protein & ? & Viral replication (H1N1)\\ 
+2015 & Kitzman~\textit{et al.}  & Gal4 & DB domain & Very high & Yeast growth \\ 
+2015 & Starita~\textit{et al.}  & BRCA1 & RING domain & Low & Y2H + E3 activity\\ 
+2016 & Mishra~\textit{et al.}  & Hsp90 & ATPase domain & Very high & Yeast growth\\ 
+2016 & Doud~\textit{et al.}  & Hemagglutinin & whole protein & ? & Viral replication (H1N1)\\ 
+2016 & Mavor~\textit{et al.}  & Ubiquitin & whole protein & Very high & Yeast growth\\ 
+
+	\end{tabular}
+\end{table}
+\end{landscape}
 % \section{Edgotyping}
 
 \section{Background: The Sumoylation Pathway}
@@ -58,16 +126,16 @@ In the following chapters, we will evaluate the performance of sequence-function
 
 Despite employing a distinct set of proteins compared to the ubiquitination machinery, the sumoylation pathway bears many close similarities. Analogously to ubiquitin, an enzymatic cascade of proteases, E1, E2 and E3s guide SUMO through its maturation, activation, conjugation and ligation phase~\cite{sumoylation} (Figure \ref{fig:sumoylation_steps}). After expression, SUMO is matured through cleavage of four amino acids from its C-terminus, exposing a diglycine motif. In humans, this process is performed by two proteases, SENP1 and SENP2. Next, an E1 activation complex (UBA2-SAE1) forms a thioester bond between the SUMO C-terminal diglycine and a cysteine residue within the E1 protein under the consumption of ATP. An E2 conjugase (UBE2I) binds to the complex, so that the activated SUMO can be transfered to one of its own cysteine residues via transesterification. 
 
-The thus loaded E2 can recognize potential target proteins via an exposed motif of four amino acids. The motif is generally described as $\Psi$KxD/E, i.e. a large hydrophobic residue, followed by a lysine, a spacer residue and an acidic residue~\cite{Sampson2001}. The motif is often found in an extended loop extending from the protein or in a disordered region~\todo{REF}. The central lysine within the motif enters the E2’s active site where it comes into contact with the SUMO diglycine. There, a peptide bond is formed between the lysine $\epsilon$-amino group and the SUMO C-terminus~\cite{BernierVillamor2002}. This process can be made more efficient in the presence E3 proteins. It is interesting to note, that while only a single SUMO E2 conjugase (UBE2I) is encoded by the human genome, there is a variety of different SUMO E3 ligases. Some work by simply stabilizing the SUMO-E2 complex, while others can outright force-feed non-canonical targets to the E2~\cite{Streich2016}. 
+The thus loaded E2 can recognize potential target proteins via an exposed motif of four amino acids. The motif is generally described as $\Psi$KxD/E, i.e. a large hydrophobic residue, followed by a lysine, a spacer residue and an acidic residue~\cite{Sampson2001}. The motif is often found in an extended loop extending from the protein or in a disordered region~\todo{REF}. The central lysine within the motif enters the E2’s active site where it comes into contact with the SUMO diglycine. There, a peptide bond is formed between the lysine $\varepsilon$-amino group and the SUMO C-terminus~\cite{BernierVillamor2002}. This process can be made more efficient in the presence E3 proteins. It is interesting to note, that while only a single SUMO E2 conjugase (UBE2I) is encoded by the human genome, there is a variety of different SUMO E3 ligases. Some work by simply stabilizing the SUMO-E2 complex, while others can outright force-feed non-canonical targets to the E2~\cite{Streich2016}. 
 
-\begin{figure}
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=\textwidth]{img/sumo_chaining.pdf}
 	\caption{Steps in SUMO chain formation as proposed by Alontaga and colleagues~\cite{Alontaga2015}. An E2 noncovalently interacts with a SUMO modification of a target protein. A second E2 carrying a covalently bound second SUMO binds the first E2-SUMO complex, allowing for the first SUMO's N-terminal tail to enter the active site, where a lysine within the tail is forms a peptide bond with the second SUMO's C-terminus. Finally, the complex dissociates, leaving behind the newly formed SUMO chain. Images are based on the following PDB structures: \texttt{3UIP}~\cite{Gareau2012}, \texttt{4Y1L}~\cite{Alontaga2015}}
 	\label{fig:sumo_chaining}
 \end{figure}
 
-Like ubiquitin, SUMO can also form chains (Figure \ref{fig:sumo_chaining}). However, of the four SUMO proteins encoded by the human genome, only SUMO2 and SUMO3 are capable of doing so, as they contain a suitable lysine residue within a disordered N-terminal tail. Capili and Lima previously observed that the E2 (UBE2I) and SUMO can interact in a noncovalent manner via a distinct binding interface~\cite{CapiliLima2007}. According to a model proposed by Alontaga and colleagues~\cite{Alontaga2015} this interaction is a key mechanism in SUMO chain formation. The interaction recruits a second, SUMO-loaded E2 that interacts with the complex in such a manner that the lysine within the first SUMO's N-terminal tail can find its way into the active site of the second E2, where the second SUMO is concatenated.
+Like ubiquitin, SUMO can also form chains (Figure \ref{fig:sumo_chaining}). However, of the four SUMO proteins encoded by the human genome, only SUMO2 and SUMO3 are capable of doing so, as they contain a suitable lysine residue within a disordered N-terminal tail\todo{REF}. Capili and Lima previously observed that the E2 (UBE2I) and SUMO can interact in a noncovalent manner via a distinct binding interface~\cite{CapiliLima2007}. According to a model proposed by Alontaga and colleagues~\cite{Alontaga2015} this interaction is a key mechanism in SUMO chain formation. The interaction recruits a second, SUMO-loaded E2 that interacts with the complex in such a manner that the lysine within the first SUMO's N-terminal tail can find its way into the active site of the second E2, where the second SUMO is concatenated.
 
 
 
