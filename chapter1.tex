@@ -22,9 +22,9 @@ As an initial test of the overall framework, we first aimed to generate a map of
 
 For Stage 2 of the framework---generation of a clone library---we employed an en masse recombinational cloning strategy to generate a Gateway Entry vector library of UBE2I variants (see Online Methods). This library was then transferred via en masse recombinational subcloning into a pool of randomly-barcoded plasmids enabling expression of UBE2I variants in yeast. The full-length sequence and barcode of each clone was established using a novel sequencing method called kiloSEQ which combines plate-position-specific index sequences with Illumina sequencing to carry out full-length sequencing for thousands of samples (see Online Methods). Based on sequence information, we retained clones that carried at least one amino acid substitution to generate a final library comprised of 6,553 UBE2I variants, covering different combinations of 1,848 (61\% of all possible) unique amino acid changes. Variant plasmids were pooled, together with empty vector and wild type control plasmids (see Online Methods).
 
-For Stage 3, the selection of clones encoding a functional protein, we employed a previously described S. cerevisiae functional complementation assay5,13. This assay is based a yeast strain carrying a temperature sensitive (ts) allele of the UBE2I orthologue UBC9, and on the observation that human UBE2I rescues growth at an otherwise lethal elevated temperature.  Despite a billion years of divergence, yeast functional complementation assays of human disease genes can accurately discriminate pathogenic from non-pathogenic variants5,13.  The plasmid library from Stage 3 was introduced into the appropriate ts strain by en-masse transformation. Pools were then grown over a period of 48 hours at the permissive (25°C) and selective (37°C) temperatures, respectively (see Online Methods).
+For Stage 3, the selection of clones encoding a functional protein, we employed a previously described S. cerevisiae functional complementation assay5,13. This assay is based a yeast strain carrying a temperature sensitive (ts) allele of the UBE2I orthologue UBC9, and on the observation that human UBE2I rescues growth at an otherwise lethal elevated temperature.  Despite a billion years of divergence, yeast functional complementation assays of human disease genes can accurately discriminate pathogenic from non-pathogenic variants5,13.  The plasmid library from Stage 3 was introduced into the appropriate ts strain by en-masse transformation. Pools were then grown over a period of 48 hours at the permissive (25\celsius ) and selective (37\celsius ) temperatures, respectively (see Online Methods).
 
-To read out the results of the selection (Stage 4), barcodes were sequenced at multiple timepoints to enable reconstruction of individual growth curves and normalized fitness quantification for each of the 6,553 strains. Functional complementation scores were calibrated so that a value of 0 corresponds to the mean fitness of the empty-vector control and a value of 1 corresponds to the average of wild type controls (see Online Methods).
+To read out the results of the selection (Stage 4), barcodes were sequenced at multiple timepoints to enable reconstruction of individual growth curves and normalized fitness quantification for each of the 6,553 strains. Functional complementation scores were calibrated so that a value of 0 corresponds to the mean fitness of the empty-vector control and a value of 1 corresponds to the average of wild type controls (see Online Methods). Each of the stages will be discussed in further detail below.
 
 
 
@@ -32,8 +32,10 @@ To read out the results of the selection (Stage 4), barcodes were sequenced at m
 
 This method scales up a previously described method developed by Seyfang et al.11. To achieve complete wide coverage over the complete spectrum of possible amino acid changes we design oligonucleotides centering on each codon in the Open Reading Frame (ORF) of interest and replacing the target with a NNK degeneracy code. This has been previously demonstrated to allow all amino acid changes while reducing the chance of generating stop codons36 . 
 
-When finding a set of suitable oligonucleotide sequences, two important criteria need to be considered; 
+When finding a set of suitable oligonucleotide sequences, two important criteria need to be considered: 
 1) The melting temperature across the complete set is as uniform as possible as this will ensure a more even mutation rate across the ORF sequence; 2) the degenerate codon sequence should be located as close to the center of the oligo as permissible given the first criterium. To simplify the process of choosing an appropriate set of oligos based on these criteria I developed a web tool that can be used to calculate the optimal solution to the given problem. The tool merely requires the sequence of the target ORF and flanking vector sequences, a desired average oligo length and a maximum offset parameter. The offset parameter determines how many bases can be maximally added or removed from each side of a given oligo to optimize its melting temperature. 
+
+In some cases a moderate deviation from the average in melting temperature for some oligos cannot be avoided. To alleviate these effects, the webtool also offers a mutation rate prediction. This is based on observations from all the POPCode procedures performed as part of this work in combination with linear regression. The prediction can be used to preemptivly adjust concentrations of potentially troublesome oligos in the POPCode protocol. An additional webtool feature based on the mutation rate prediction is the automatic calculation of necessary library size to achieve a desired mutational coverage. The webtool as available at \verb|http://llama.mshri.on.ca/cgi/popcodeSuite/main|.
 
 %%Figure: PopCode schema
 
@@ -64,20 +66,33 @@ The first phase---demultiplexing---takes place on two levels, corresponding to l
 
 The second phase---barcode clustering---uses the extracted barcode sequences within each bin and clusters them according to their Levenstein distance (i.e. the number of edit operations separating them). This step is necessary due to resolve possible contamination across wells that occurred during library preparation. Each barcode cluster corresponds to a different clone, and the concrete sequences within each clusters to different sequencing errors. The the most frequent sequence within each cluster is interpreted as the true barcode. Finally, read pairs within each bin are again subdivided according to their respective barcode cluster.
 
-The third phase---alignment and variant calling---is then executed for each barcode cluter within each well within each plate. The R1 reads are aligned to the template sequence and variants are called. This is complicated by the fact that KiloSEQ library preparation usually creates a certain amount of cross-contamination between wells. While single or multi-nucleotide variants are still relatively unproblematic to identify, standard tools were unable to identify copy number variations (CNVs) due to these problems. We thus developed a custom method for CNV detection, based on detecting sudden changes in read depth across the alignments. First the read depth is normalized to the average read depth across the plate. Then a one-dimensional Sobel operator is used to detect sharp edges in the signal.
+The third phase---alignment and variant calling---is then executed for each barcode cluter within each well within each plate. The R1 reads are aligned to the template sequence and variants are called. This is complicated by the fact that KiloSEQ library preparation usually creates a certain amount of cross-contamination between wells. While single or multi-nucleotide variants are still relatively unproblematic to identify, standard tools were unable to identify copy number variations (CNVs) due to these problems. We thus developed a custom method for CNV detection, based on detecting sudden changes in read depth across the alignments. First the read depth is normalized to the average read depth across the plate. Then a one-dimensional Sobel operator is used to detect sharp edges in the signal. An example of this can be seen in Figure~\ref{fig:border_detect}.
 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{img/border_detect.pdf}
+	\caption{Indel detection example. A duplication event in well \texttt{A\_A02} is detected by normalizing relative read depth by the mean depth across the plate and using a Sobel operator to detect sudden changes.}
+	\label{fig:border_detect}
+\end{figure}
+
+
+After successful genotyping with kiloseq, we determined the subset of clones that (i) contained a minimum of one missense mutation, (ii) did not contain any insertions or deletions, (iii) did not contain mutations outside of the ORF, (iii) had unique barcodes, (iv) had sufficient read coverage during kiloSEQ to allow for confident genotyping.
+Over half of clones in the library conformed to these criteria. The single largest reason for exlusion was the occurrence of indels and CNVs (Figure~\ref{fig:popcode_census}A). 
+
+An analysis of the mutation signatures across clones generated by POPCode revealed that two different mechanisms appear to underly the mutagenesis. When considering only mutations that change more than one base in a given codon, there is an equal chance for every possible base, except in the third position in which almost no adenine or cytosines were placed. This is consistent with the NNK degeneracy code present in the POPCode oligos. By contrast, variants that change only a single base in a given codon show a strong bias for transitions over transversions. These could be introduced due to polymerase error (Figure~\ref{fig:popcode_census}B). This is also reflected in the relative share of single nucleotide variants, which make up 56\% of mutations (Figure~\ref{fig:popcode_census}C). As a consequence, when examining the mutation coverage across the sequence of the ORF, it is clearly visible that the share of amino acids reachable with a single nucleotide change from the respective wildtype codon is much closer to saturation than the the set of all possible amino acid changes (Figure~\ref{fig:popcode_census}D). Additionally some hotspots are visible, in which mutation rate is higher, which is likely due to different hybridization efficiencies of oligos across the ORF sequence.
+
+Using the Biomatrix robot, we re-arrayed the subset of usable clones into a condensed final library of 40 plates.
+
+
+%%Figure library coverage, census, and bias map
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\textwidth]{img/popcode_census.pdf}
-	\caption{KiloSEQ census of UBE2I POPCode library}
+	\caption{KiloSEQ census of UBE2I POPCode library. A) Breakdown of KiloSEQ results for a set of five 384 well plates of mutant clones generated by POPCode. Corrupt: Clones containing mutations outside of the ORF; Frameshift: Clones containing indels or copy number variants; Stop: Clones containing stop codons. B) Breakdown of mutations in codons. Top: Single nucleotide variants; Bottom: Multi-nucleotide variants. Columns correspond to the first, second and third position in a codon. C) Relative shares of single, double and triple nucleotide variants among all missense variants in the library. D) Coverage map of missense variants in the library. Light green track: Coverage across all possible amino acids; Dark green track: Coverage across amino acids reachable with a single nucleotide change from the wildtype codon.}
 	\label{fig:popcode_census}
 \end{figure}
 
-
-After successful genotyping with kiloseq, we determined the subset of clones that (i) contained a minimum of one missense mutation, (ii) did not contain any insertions or deletions, (iii) did not contain mutations outside of the ORF, (iii) had unique barcodes, (iv) had sufficient read coverage during kiloSEQ to allow for confident genotyping. Using the Biomatrix robot, we re-arrayed this filtered subset of clones into a condensed final library of 40 plates.
-
-%%Figure library coverage, census, and bias map
 
 \subsubsection{A barcoded-based functional map of UBE2I}
 
