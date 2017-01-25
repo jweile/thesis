@@ -30,8 +30,18 @@ Yeast-2-Hybrid (Y2H)~\cite{FieldsSongY2H} is a binary protein interaction assay 
 
 Y2H does however suffer from a number of drawbacks. Due to the the transcription factor needing to physically associate with DNA, any protein to be examined needs to be able to enter the nucleus. While this issue is alleviated by the fusion with a nuclear localization sequence, it does not work for every protein~\cite{Y2Hnls}. A particular problem are membrane proteins which generally cannot enter the nucleus at all. A variant of Y2H, MYTH exists for these proteins~\cite{MYTH}. It has been estimated that Y2H has an overall assay sensitivity of 20\%. That is, only one in five real existing protein interactions can be detected by Y2H~\cite{Rual2012?}. These levels are comparable most other binary interaction assays, such as LUMIER~\cite{lumier} or MAPPIT~\cite{mappit}.
 
+%Explain difference between binary and complex interactions
+%Explain previous confusions about reproducibility originating from Ito et al.
+
 When considering Y2H as an assay for variant function assessment it is important to consider that it does not measure all aspects of a protein's functionality, but rather only its ability to physically associate with a given interaction partner. Thus only variants that result either in major failures in protein folding or in changes to the binding binding interface could be detected. However, in a recent examination of the Y2H performance of common disease associated variants, we found that approximately two out of three disease variants manifest in such a way~\cite{Sahni2015}. 
 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{img/compl_y2h.pdf}
+	\caption{Complementation and Yeast-2-Hybrid}
+	\label{fig:compl_y2h}
+\end{figure}
 %Discuss Edgotyping?
 
 Nonetheless, an assay that can measure the overall functionality of a protein within the cell would be preferable. Functional complementation~\cite{complementation} in yeast offers such an option. It based on the premise that some human genes can be used to rescue the deletion of their orthologues in yeast. That is, a fitness defect resulting from the inactivation of the yeast gene is alleviated by the artificial expression of the human gene. Therefore, any relative changes in fitness upon expressing a variant of the human gene can be interpreted as the variant's effect on the protein's overall ability to function. Song Sun and other members of the Roth Lab have recently examined the applicability of functional complementation in yeast to the assessment of disease variants~\cite{sun_extended_2016}. They have found an astonishing predictive capacity despite yeast and humans being diverged by a 1.5 billion year. Yeast complementation outperformed \textit{in silico} methods like PolyPhen-2 and PROVEAN in terms of disease variant prediction by a wide margin. At the 90\% specificity threshold discussed in section~\ref{insilicoIntro}, the complementation assay achieved a sensitivity of over 60\% (as compared to 19\% and 21\% for the two \textit{in silico} methods, respectively).
@@ -78,35 +88,35 @@ The fourth step in the procedure is sequencing.
 	\label{table:DMSstudies}
 	\begin{tabular}{l l l l l l l}
 	\textbf{Year} & \textbf{Authors} & \textbf{Protein} & \textbf{Region} & \textbf{Saturation} & \textbf{Selection} \\ \hline \hline
-2010 & Fowler~\textit{et al.}~\cite{fowler_high-resolution_2010} & YAP65 & WW domain & Very high & Phage display \\  
-2010 & Ernst~\textit{et al.} & Synthetic protein & PDZ domain & ? & Phage display \\ 
-2012 & Fujino~\textit{et al.} & Fab antibody fragment & fragment & Very high & Ribodisplay \\ 
-2012 & Adkar~\textit{et al.} & Ccdb & whole protein & ? & Toxin activity in \species{E.~coli}\\ 
-2012 & McLaughlin~\textit{et al.} & PSD95 & PDZ domain & Very high & B2H+FACS (\species{E.~coli})\\ 
-2012 & Schlinkmann~\textit{et al.} & GPCR & whole protein & High & FACS (\species{E.~coli})\\ 
-2012 & Whitehead~\textit{et al.} & Synthetic protein & whole protein & Very high & Yeast display \\ 
-2012 & Traxlmayr~\textit{et al.} & IgG1 & CH2/CH3 domains & ? & Yeast display \\ 
-2012 & Wu~\textit{et al.} & Neuraminidase & SNP accessible & ? & Drug resistance (H1N1)\\ 
-2013 & Roscoe~\textit{et al.} & Ubiquitin & whole protein & High & Yeast growth\\ 
-2013 & Starita~\textit{et al.} & Ub.E3 E4B & whole protein & Low & Phage display\\ 
-2013 & Procko~\textit{et al.}  & Synthetic protein & 60AA & Very high & Yeast display\\ 
-2013 & Tinberg~\textit{et al.}  & Synthetic protein & 40AA & High & Yeast display\\ 
-2013 & Jiang~\textit{et al.}  & Hsp90 & substrate binding loop & Very high & Yeast complementation\\ 
-2013 & Kim~\textit{et al.}  & Mat alpha  & degron region & ? & Yeast growth\\ 
-2013 & Melamed~\textit{et al.}  & Pab1 & RRM domain & High & Yeast complementation\\ 
-2013 & Forsyth~\textit{et al.}  & Antibody for EGFR & whole protein & Very high & Human cell display\\ 
-2013 & Wagenaar~\textit{et al.}  & BRAF & 77 Aas & ? & Drug resistance (Human)\\ 
-2014 & Firnberg~\textit{et al.}  & TEM1-beta lactamase & Whole protein & High & Drug resistance (\species{E.~coli})\\ 
-2014 & Olson~\textit{et al.}  & G protein (GB1) & IgG-binding domain & High & RNA display\\ 
-2014 & Melnikov~\textit{et al.}  & APH(3′)II (kinase) & whole protein & Very high & Drug resistance (\species{E.~coli})\\ 
-2014 & Thyagarajan~\textit{et al.}  & hemagglutinin & whole protein & ? & Viral replication (H1N1)\\ 
-2015 & Stiffler~\textit{et al.}  & TEM1 Beta-lactamase & whole protein & Very high & \species{E.~coli} growth\\ 
-2015 & Doud~\textit{et al.}  & influenza nucleoprotein & whole protein & ? & Viral replication (H1N1)\\ 
-2015 & Kitzman~\textit{et al.}  & Gal4 & DB domain & Very high & Yeast growth \\ 
-2015 & Starita~\textit{et al.}  & BRCA1 & RING domain & Low & Y2H + E3 activity\\ 
-2016 & Mishra~\textit{et al.}  & Hsp90 & ATPase domain & Very high & Yeast growth\\ 
-2016 & Doud~\textit{et al.}  & Hemagglutinin & whole protein & ? & Viral replication (H1N1)\\ 
-2016 & Mavor~\textit{et al.}  & Ubiquitin & whole protein & Very high & Yeast growth\\ 
+2010 & Fowler~\etal~\cite{fowler_high-resolution_2010} & YAP65 & WW domain & Very high & Phage display \\  
+2010 & Ernst~\etal & Synthetic protein & PDZ domain & ? & Phage display \\ 
+2012 & Fujino~\etal & Fab antibody fragment & fragment & Very high & Ribodisplay \\ 
+2012 & Adkar~\etal & Ccdb & whole protein & ? & Toxin activity in \species{E.~coli}\\ 
+2012 & McLaughlin~\etal & PSD95 & PDZ domain & Very high & B2H+FACS (\species{E.~coli})\\ 
+2012 & Schlinkmann~\etal & GPCR & whole protein & High & FACS (\species{E.~coli})\\ 
+2012 & Whitehead~\etal & Synthetic protein & whole protein & Very high & Yeast display \\ 
+2012 & Traxlmayr~\etal & IgG1 & CH2/CH3 domains & ? & Yeast display \\ 
+2012 & Wu~\etal & Neuraminidase & SNP accessible & ? & Drug resistance (H1N1)\\ 
+2013 & Roscoe~\etal & Ubiquitin & whole protein & High & Yeast growth\\ 
+2013 & Starita~\etal & Ub.E3 E4B & whole protein & Low & Phage display\\ 
+2013 & Procko~\etal  & Synthetic protein & 60AA & Very high & Yeast display\\ 
+2013 & Tinberg~\etal  & Synthetic protein & 40AA & High & Yeast display\\ 
+2013 & Jiang~\etal  & Hsp90 & substrate binding loop & Very high & Yeast complementation\\ 
+2013 & Kim~\etal  & Mat alpha  & degron region & ? & Yeast growth\\ 
+2013 & Melamed~\etal  & Pab1 & RRM domain & High & Yeast complementation\\ 
+2013 & Forsyth~\etal  & Antibody for EGFR & whole protein & Very high & Human cell display\\ 
+2013 & Wagenaar~\etal  & BRAF & 77 Aas & ? & Drug resistance (Human)\\ 
+2014 & Firnberg~\etal  & TEM1-beta lactamase & Whole protein & High & Drug resistance (\species{E.~coli})\\ 
+2014 & Olson~\etal  & G protein (GB1) & IgG-binding domain & High & RNA display\\ 
+2014 & Melnikov~\etal  & APH(3′)II (kinase) & whole protein & Very high & Drug resistance (\species{E.~coli})\\ 
+2014 & Thyagarajan~\etal  & hemagglutinin & whole protein & ? & Viral replication (H1N1)\\ 
+2015 & Stiffler~\etal  & TEM1 Beta-lactamase & whole protein & Very high & \species{E.~coli} growth\\ 
+2015 & Doud~\etal  & influenza nucleoprotein & whole protein & ? & Viral replication (H1N1)\\ 
+2015 & Kitzman~\etal  & Gal4 & DB domain & Very high & Yeast growth \\ 
+2015 & Starita~\etal  & BRCA1 & RING domain & Low & Y2H + E3 activity\\ 
+2016 & Mishra~\etal  & Hsp90 & ATPase domain & Very high & Yeast growth\\ 
+2016 & Doud~\etal  & Hemagglutinin & whole protein & ? & Viral replication (H1N1)\\ 
+2016 & Mavor~\etal  & Ubiquitin & whole protein & Very high & Yeast growth\\ 
 
 	\end{tabular}
 \end{table}

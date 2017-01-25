@@ -118,10 +118,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="708.77618"
-     inkscape:cy="488.6415"
+     inkscape:cx="705.81557"
+     inkscape:cy="547.16391"
      inkscape:document-units="cm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g5901"
      showgrid="false"
      units="cm"
      fit-margin-top="1"
@@ -3213,20 +3213,48 @@
            y="-87.947205"
            x="7551.5791"
            id="tspan5911"
-           sodipodi:role="line">mutant ORF X</tspan></text>
+           sodipodi:role="line">mutant ORF</tspan></text>
       <text
          transform="scale(1.0000493,0.99995071)"
          sodipodi:linespacing="125%"
          id="text5913"
-         y="46.932304"
-         x="7501.4692"
-         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:27.13567734px;line-height:125%;font-family:Futura;-inkscape-font-specification:'Futura Medium';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+         y="15.616032"
+         x="7557.7314"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:27.13567734px;line-height:125%;font-family:Futura;-inkscape-font-specification:'Futura Medium';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
          xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:27.13567734px;font-family:Futura;-inkscape-font-specification:'Futura Medium'"
-           y="46.932304"
-           x="7501.4692"
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:27.13567734px;font-family:Futura;-inkscape-font-specification:'Futura Medium';text-align:center;text-anchor:middle"
+           y="15.616032"
+           x="7557.7314"
            id="tspan5915"
-           sodipodi:role="line">pDONR</tspan></text>
+           sodipodi:role="line">Barcoded</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:27.13567734px;font-family:Futura;-inkscape-font-specification:'Futura Medium';text-align:center;text-anchor:middle"
+           y="49.535625"
+           x="7557.7314"
+           sodipodi:role="line"
+           id="tspan4474">Expression</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:27.13567734px;font-family:Futura;-inkscape-font-specification:'Futura Medium';text-align:center;text-anchor:middle"
+           y="83.455231"
+           x="7557.7314"
+           sodipodi:role="line"
+           id="tspan4476">Vector</tspan></text>
+      <path
+         style="fill:#d40000;fill-opacity:1;stroke:#e6e6e6"
+         d="M 363.61719 697.41016 L 358.50781 705.0625 C 366.115 709.87069 373.09525 715.57992 379.29492 722.04492 L 386.12109 715.87305 C 379.41333 708.84694 371.8558 702.64046 363.61719 697.41016 z "
+         transform="translate(7252.6074,-763.35521)"
+         id="path4478" />
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:17px;line-height:125%;font-family:Futura;-inkscape-font-specification:'Futura Medium';letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+         x="7662.2881"
+         y="-59.017208"
+         id="text4485"
+         sodipodi:linespacing="125%"
+         transform="scale(1.0000493,0.99995071)"><tspan
+           sodipodi:role="line"
+           id="tspan4487"
+           x="7662.2881"
+           y="-59.017208"
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:17px;font-family:Futura;-inkscape-font-specification:'Futura Medium';text-align:center;text-anchor:middle">barcode</tspan></text>
     </g>
     <path
        sodipodi:nodetypes="cccccccc"
@@ -3309,7 +3337,32 @@
            style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:23.75160027px;font-family:Futura;-inkscape-font-specification:'Futura Medium';text-align:center;text-anchor:middle"
            y="-186.81371"
            x="6537.3638"
-           sodipodi:role="line">BP</tspan></text>
+           sodipodi:role="line">BP+LR</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:23.75160027px;font-family:Futura;-inkscape-font-specification:'Futura Medium';text-align:center;text-anchor:middle"
+           y="-157.12421"
+           x="6537.3638"
+           sodipodi:role="line"
+           id="tspan4472">cloning</tspan></text>
     </g>
+    <path
+       inkscape:export-ydpi="100"
+       inkscape:export-xdpi="100"
+       inkscape:export-filename="/Users/jweile/Desktop/popcode_schema.png"
+       inkscape:transform-center-y="-0.25284575"
+       inkscape:transform-center-x="0.013033217"
+       d="m -68.171236,578.11835 -3.467942,-2.33588 -3.395425,2.44009 1.149891,-4.02004 -3.369899,-2.47521 4.178614,-0.14865 1.312712,-3.96985 1.432634,3.92817 4.181202,0.0217 -3.293198,2.57639 z"
+       inkscape:randomized="0"
+       inkscape:rounded="0"
+       inkscape:flatsided="false"
+       sodipodi:arg2="1.5556137"
+       sodipodi:arg1="0.92729522"
+       sodipodi:r2="2.3356006"
+       sodipodi:r1="5.8390021"
+       sodipodi:cy="573.44714"
+       sodipodi:cx="-71.674638"
+       sodipodi:sides="5"
+       id="path4483"
+       style="display:inline;fill:#ffcc00;fill-opacity:1;stroke:#828282;stroke-width:1.16780043;stroke-opacity:1"
+       sodipodi:type="star" />
   </g>
 </svg>
