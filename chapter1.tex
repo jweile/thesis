@@ -16,6 +16,15 @@ To carry out deep mutational scans of protein sequences yielding comprehensive a
 
 We first describe a variant of the framework called DMS-BarSeq and apply it to the human SUMO conjugase UBE2I, exhaustively measuring the ability of protein variants to function and to physically interact with protein partners.  Next, we describe a more efficient DMS-TileSeq variant of the framework, and apply this to UBE2I.  Having combined these maps, we computationally infer missing data points and refine map quality.
 
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{img/framework_flowchart.pdf}
+	\caption{An overview of the Deep Mutational Scanning Framework.}
+	\label{fig:framework}
+\end{figure}
+
+
 \subsection{A barcode-based Deep Mutational Scanning strategy}
 
 %Describe goals for this screen, and then how the different choices below aim to achieve these.
@@ -66,11 +75,11 @@ KiloSEQ was developed in collaboration with SeqWell Inc., Boston. First, for eac
 \end{figure}
 
 To process the results of a KiloSEQ sequencing run, a special software pipeline was developed, which can be divided into three phases: Demultiplexing; Barcode clustering; and Alignment and variant calling.
-The first phase---demultiplexing---takes place on two levels, corresponding to library plates and the wells within those plates. The plate level of demultiplexing is automatically performed by Illumina's bcl2fastq software, which resolves i5-i7 index combinations. The second phase is performed on a high performance computing cluster. Sets of read pairs are distributed across computing nodes, where they are processed by worker scripts. The well-tag within each R2 read is identified using a k-mer search algorithm, and read-pairs are sorted accordingly into bins. Each bin corresponds to one well in a given plate. At the same time, barcode sequences are extracted from the R2 reads in preparation for the next phase. 
+The first phase---demultiplexing---takes place on two levels, corresponding to library plates and the wells within those plates. Demultiplexing at plate level is performed by Illumina's bcl2fastq software, which resolves i5-i7 index combinations. The second phase is performed on a high performance computing cluster. Sets of read pairs are distributed across computing nodes, where they are processed by worker scripts. The well-tag within each R2 read is identified using a k-mer search algorithm, and read-pairs are sorted accordingly into bins. Each bin corresponds to one well in a given plate. At the same time, barcode sequences are extracted from the R2 reads in preparation for the next phase. 
 
-The second phase---barcode clustering---uses the extracted barcode sequences within each bin and clusters them according to their Levenstein distance (i.e. the number of edit operations separating them). This step is necessary due to resolve possible contamination across wells that occurred during library preparation. Each barcode cluster corresponds to a different clone, and the concrete sequences within each clusters to different sequencing errors. The the most frequent sequence within each cluster is interpreted as the true barcode. Finally, read pairs within each bin are again subdivided according to their respective barcode cluster.
+The second phase---barcode clustering---uses the extracted barcode sequences within each bin and clusters them according to their Levenstein distance\cite{Levenstein} (i.e. the number of edit operations required to transform one into the other). This step is necessary in order to resolve possible contamination across wells that occurred during library preparation. Each barcode cluster corresponds to a different clone, and the different unique sequences within each clusters correspond to different sequencing errors. The most frequently observed sequence within each cluster is interpreted as the true barcode. Finally, read pairs within each bin are again subdivided according to their respective barcode cluster.
 
-The third phase---alignment and variant calling---is then executed for each barcode cluter within each well within each plate. The R1 reads are aligned to the template sequence and variants are called. This is complicated by the fact that KiloSEQ library preparation usually creates a certain amount of cross-contamination between wells. While single or multi-nucleotide variants are still relatively unproblematic to identify, standard tools were unable to identify copy number variations (CNVs) due to these problems. We thus developed a custom method for CNV detection, based on detecting sudden changes in read depth across the alignments. First the read depth is normalized to the average read depth across the plate. Then a one-dimensional Sobel operator is used to detect sharp edges in the signal. An example of this can be seen in Figure~\ref{fig:border_detect}.
+The third phase---alignment and variant calling---is then executed for each barcode cluster within each well within each plate. The R1 reads are aligned to the template sequence and variants are called. This is complicated by the fact that the KiloSEQ library preparation usually creates a certain amount of cross-contamination between wells. While single or multi-nucleotide variants are still relatively unproblematic to identify, standard tools were found to be unable to identify copy number variations (CNVs) due to these problems. We thus developed a custom method for CNV calling, based on detecting sudden changes in read depth across the alignments. First the individual read depth track is normalized to the average read depth across the plate. Then a one-dimensional Sobel operator is used to detect sharp edges in the signal. An example of this can be seen in Figure~\ref{fig:border_detect}. Detection thresholds were optimized by comparison with Sanger sequencing.
 
 \begin{figure}[h!]
 	\centering
@@ -80,16 +89,10 @@ The third phase---alignment and variant calling---is then executed for each barc
 \end{figure}
 
 
-After successful genotyping with kiloseq, we determined the subset of clones that (i) contained a minimum of one missense mutation, (ii) did not contain any insertions or deletions, (iii) did not contain mutations outside of the ORF, (iii) had unique barcodes, (iv) had sufficient read coverage during kiloSEQ to allow for confident genotyping.
-Over half of clones in the library conformed to these criteria. The single largest reason for exlusion was the occurrence of indels and CNVs (Figure~\ref{fig:popcode_census}A). 
+After successful genotyping with kiloseq, we determined the subset of clones that (i) contained at least one missense mutation, (ii) did not contain any insertions or deletions, (iii) did not contain mutations outside of the ORF, (iii) had unique barcodes, (iv) had sufficient read coverage during kiloSEQ to allow for confident genotyping.
+Over half of clones in the library conformed to these criteria. The single largest reason for exclusion was the occurrence of indels and CNVs (Figure~\ref{fig:popcode_census}A). 
 
-An analysis of the mutation signatures across clones generated by POPCode revealed that two different mechanisms appear to underly the mutagenesis. When considering only mutations that change more than one base in a given codon, there is an equal chance for every possible base, except in the third position in which almost no adenine or cytosines were placed. This is consistent with the NNK degeneracy code present in the POPCode oligos. By contrast, variants that change only a single base in a given codon show a strong bias for transitions over transversions. These could be introduced due to polymerase error (Figure~\ref{fig:popcode_census}B). This is also reflected in the relative share of single nucleotide variants, which make up 56\% of mutations (Figure~\ref{fig:popcode_census}C). As a consequence, when examining the mutation coverage across the sequence of the ORF, it is clearly visible that the share of amino acids reachable with a single nucleotide change from the respective wildtype codon is much closer to saturation than the the set of all possible amino acid changes (Figure~\ref{fig:popcode_census}D). Additionally some hotspots are visible, in which mutation rate is higher, which is likely due to different hybridization efficiencies of oligos across the ORF sequence.
-
-Using the Biomatrix robot, we re-arrayed the subset of usable clones into a condensed final library of 40 plates. This final library comprised 6,553 UBE2I variants, covering different combinations of 1,848 (61\% of all possible) unique amino acid changes. 
-
-
-
-%%Figure library coverage, census, and bias map
+An analysis of the mutation signatures across clones generated by POPCode revealed that two different mechanisms appear to underly mutagenesis. When considering only mutations that change more than one base in a given codon, there is an equal chance for every possible base except in the third position, where almost no adenine or cytosine was introduced. This is consistent with the NNK degeneracy code used in the POPCode oligo design. By contrast, variants that change only a single base in a given codon show a strong bias for transitions over transversions. These could be introduced due to polymerase error (Figure~\ref{fig:popcode_census}B). This is also reflected in the relative share of single nucleotide variants, which make up 56\% of mutations (Figure~\ref{fig:popcode_census}C). As a consequence, when examining the mutation coverage across the sequence of the ORF, it is clearly visible that the share of amino acids reachable with a single nucleotide change from the respective wildtype codon is much closer to saturation than the the set of all possible amino acid changes (Figure~\ref{fig:popcode_census}D). Additionally some hotspots are visible, in which mutation rate is higher, which is likely due to different hybridization efficiencies of oligos across the ORF sequence.
 
 \begin{figure}[h!]
 	\centering
@@ -98,21 +101,43 @@ Using the Biomatrix robot, we re-arrayed the subset of usable clones into a cond
 	\label{fig:popcode_census}
 \end{figure}
 
+Using the Biomatrix robot, we re-arrayed the subset of usable clones into a condensed final library of 40 plates. This final library comprised 6,553 UBE2I variants, covering different combinations of 1,848 (61\% of all possible) unique amino acid changes. In preparation for the next stage, variant plasmids were pooled, together with barcoded empty vector and wild type control plasmids.
+
 
 \subsubsection{Complementation screen and Barcode sequencing}
 
-Variant plasmids were pooled, together with empty vector and wild type control plasmids (see Online Methods).
+For Stage 3---the selection of clones encoding a functional protein---we employed a previously described \species{S.~cerevisiae} functional complementation assay\cite{5,13}. This assay is based a yeast strain carrying a temperature sensitive (ts) allele of the UBE2I orthologue UBC9. Expression of human UBE2I rescues growth at an otherwise lethal elevated temperature. As such, the fitness observed for a clone carrying a mutant allele of UBE2I can be interpreted as the overall ability of the variant protein to function within its biological context\cite{Song}. 
+The plasmid library from Stage 3 was introduced into the appropriate ts strain by en-masse transformation. Pools were then grown in triplicates over a period of 48 hours at the permissive (25\celsius ) and selective (37\celsius ) temperatures, respectively (see Online Methods) and evaluated at multiple time points via high-throughput sequencing.
 
+To facilitate the readout of the selection (Stage 4), I developed a sequence analysis pipeline. The pipeline distributes sets of read pairs across across the nodes of a high-performance computing cluster, where a k-mer search algorithm is used to identify multiplexing tags that encode the temperature and time point and replicate number associated with the sample. The same algorithm is also used to identify the barcode itself. The number of occurrences of each barcode in each sample is counted and aggregated across the cluster nodes. The frequencies at which each barcode is observed corresponds to the population size of the associated clone. This can then be used to reconstruct of individual growth curves and quantify the normalized fitness for each of the 6,553 strains as follows: Let $c_{i,t_k}^\tau$ be the barcode count for clone $i$, timepoint $t_k$ at temperature $\tau$, then $ \forall i \in \{1 \le i \le N | i \in \mathbb{N} \}$, 
+$\forall k \in \{1 \le k \le 5 | k \in \mathbb{N} \}$, 
+$\forall \tau \in \{25^{\circ},37^{\circ} \}$
+\begin{align*}
+r_{i,t_k}^{(\tau)} &= \frac{ c_{i,t_k}^{(\tau)} }{ \sum_j c_{j,t_k}^{(\tau)} }\\
+P_{i,t_k}^{(\tau)} &= r_{i,t_k}^{(\tau)} \cdot P_{*,t_k}^{(\tau)} \\
+\rho_{i,t_k}^{(\tau)} &= \sqrt[\uproot{5}(t_k - t_{k-1})]{\frac{P_{i,t_k}^{(\tau)}}{P_{i,t_{k-1}}^{(\tau)}}} \\
+%\rho_{*,t_k}^\tau &= \sqrt[\uproot{5}(t_k - t_{k-1})]{\frac{P_{*,t_k}^\tau}{P_{*,t_{k-1}}^\tau}} \\
+\phi_{i,t_k}^{(\tau)} &= \frac{\rho_{i,t_k}^{(\tau)}}{\rho_{*,t_k}^{(\tau)}}\\
+\phi_{i,t_k}^\prime &= \frac{\phi_{i,t_k}^{(37^{\circ})}}{\phi_{*,t_k}^{(25^{\circ})}}\\
+s_i &= \prod_k \phi_{i,t_k}^\prime \\
+s'_i &= \frac{s_i - s_\text{null}}{s_\text{wt} - s_\text{null}},
+\end{align*}
 
-For Stage 3, the selection of clones encoding a functional protein, we employed a previously described \species{S.~cerevisiae} functional complementation assay5,13. This assay is based a yeast strain carrying a temperature sensitive (ts) allele of the UBE2I orthologue UBC9, and on the observation that human UBE2I rescues growth at an otherwise lethal elevated temperature.  Despite a billion years of divergence, yeast functional complementation assays of human disease genes can accurately discriminate pathogenic from non-pathogenic variants5,13.  The plasmid library from Stage 3 was introduced into the appropriate ts strain by en-masse transformation. Pools were then grown over a period of 48 hours at the permissive (25\celsius ) and selective (37\celsius ) temperatures, respectively (see Online Methods).
+where $r_{i,t_k}^{(\tau)}$ is the relative population size for clone $i$ and timepoint $t_k$ at temperature $\tau$, $P_{i,t_k}^{(\tau)}$ is the absolute population size for clone $i$, timepoint $t_k$ at temperature $\tau$, $\rho_{i,t_k}^{(\tau)}$ is the measured hourly growth rate for clone $i$, timepoint $t_k$ at temperature $\tau$, $\phi_{i,t_k}^{(\tau)}$ is the fitness advantage relative to the pool growth for clone $i$, timepoint $t_k$ at temperature $\tau$, $\phi_{i,t_k}^\prime$ is the normalized relative fitness advantage for clone $i$ at timepoint $t_k$, and $s_i$ is the cumulative normalized relative fitness advantage for clone $i$. Finally, $s'_i$ is the fitness score relative to the internal null and wild type controls. This results in null-like mutants receiving a score of zero and wild type-like mutants receiving a score of one.
 
-To read out the results of the selection (Stage 4), barcodes were sequenced at multiple timepoints to enable reconstruction of individual growth curves and normalized fitness quantification for each of the 6,553 strains. Functional complementation scores were calibrated so that a value of 0 corresponds to the mean fitness of the empty-vector control and a value of 1 corresponds to the average of wild type controls (see Online Methods). Each of the stages will be discussed in further detail below.
+Additional care needs to be taken to quantify the level of confidence for each fitness measurement. While comparing the three technical replicates available for each clone allows for a rough estimation of standard error, improvements can be made. Baldi and Long previously published a Bayesian method allowing for the regularization of variance estimations using prior data\cite{baldiLong}. Two sources of prior information offer themselves: (1) A low number of reads counted at time 0 of the experiment which is likely to result in a poor frequency estimate; and (2) the fitness estimate itself, as variance is often proportional to the mean. Indeed, when comparing both properties with the standard deviation, a clear trend is visible (Figure~\ref{fig:baldiLong}). After obtaining a prior via linear regression, it can be used to regularize the empirical standard deviation estimate.
 
-%TODO: Describe pipeline
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{img/baldi_long.pdf}
+	\caption{Comparison of fitness and initial barcode count against standard deviation. Both properties can be used as prior information to improve confidence quantification.}
+	\label{fig:baldiLong}
+\end{figure}
+
 
 \subsubsection{A barcoded-based functional map of UBE2I}
 
-To assess the quality of complementation scores before further refinement in Stages 5 and 6, we first examined reproducibility of scores between technical replicates (Figure 1B, top panel), and biological replicates (different clones carrying the same mutation; Figure 1B, bottom panel).  In each case the scores were reproducible (Pearson’s R of 0.97 and 0.78, respectively).   To further examine score quality, we carried out semi-quantitative manual complementation spotting assays for a subset of mutants that spanned the range of fitness scores (see Supplementary Methods). Complementation scores from deep mutational scanning correlated well with these small-scale tests. Indeed, agreement between the large-scale and manual scores was about the same as agreement between internal replicates of the large-scale scores (Figure 1B,C). 
+To assess the quality of complementation scores before further refinement in Stages 5 and 6, we first examined the reproducibility of scores between technical replicates (Figure 1B, top panel), and biological replicates (different clones carrying the same mutation; Figure 1B, bottom panel).  In each case the scores were reproducible (Pearson’s R of 0.97 and 0.78, respectively).   To further examine score quality, we carried out semi-quantitative manual complementation spotting assays for a subset of mutants that spanned the range of fitness scores (see Supplementary Methods). Complementation scores from deep mutational scanning correlated well with these small-scale tests. Indeed, agreement between the large-scale and manual scores was about the same as agreement between internal replicates of the large-scale scores (Figure 1B,C). 
 
 As a further ‘sanity check’, we next examined evolutionary conservation and common predictors of deleteriousness, such as PolyPhen-23 and PROVEAN4.  Although these do not perfectly predict the functionality of amino acid changes5 —and may be particularly ill-suited for assessing amino acid changes that require multiple nucleotide substitutions in a given codon—they should nonetheless correlate with functionality.  Indeed, DMS-BarSeq fitness scores were significantly correlated with evolutionary conservation and PolyPhen-2 and PROVEAN scores (Figure 1D top panel, Supplementary Figure S1). Finally, we confirmed that, as expected, amino acid residues on the protein surface are more tolerant to mutation than those in the protein core or within interaction interfaces (Figure 1D, bottom panel).  Taken together, these observations support the biological relevance of the DMS-BarSeq approach.
 
