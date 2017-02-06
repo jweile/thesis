@@ -18,7 +18,7 @@ Given the much greater difficulty of interpreting non-coding regions, clinical a
 \section{\textit{In silico} approaches to variant function assessment}
 \label{insilicoIntro}
 
-A number of algorithms exist that offer predictions as to the deleteriousness of mutations, the most prominent ones being PolyPhen-2~\cite{adzhubei_method_2010}, SIFT~\cite{SIFT} and PROVEAN~\cite{choi_fast_2012}. PolyPhen-2 uses a machine learning method using evolutionary conservation and protein structural features. It uses a set of previously reported pathogenic alleles as a positive training set and differences between human genes and their mammalian homologues as a negative training set. SIFT (Sorting Intolerant From Tolerant) by contrast only uses evolutionary conservation. The tool uses multiple sequence alignments to calculate position-specific score matrices for each gene which are then normalized and transformed into probability values. PROVEAN (PROtein Variation Effect ANalyzer) similarly only takes into account sequence alignments. However, rather than just computing a position-specific score, PROVEAN calculates the difference in alignment quality between using the wildtype or variant sequence against clusters of homologous sequences. The average distance is then interpreted as indicative of the deleteriousness of the variant. 
+A number of algorithms exist that offer predictions as to the deleteriousness of mutations, the most prominent ones being PolyPhen-2~\cite{adzhubei_predicting_2001}, SIFT~\cite{ng_predicting_2001} and PROVEAN~\cite{choi_predicting_2012}. PolyPhen-2 uses a machine learning method using evolutionary conservation and protein structural features. It uses a set of previously reported pathogenic alleles as a positive training set and differences between human genes and their mammalian homologues as a negative training set. SIFT (Sorting Intolerant From Tolerant) by contrast only uses evolutionary conservation. The tool uses multiple sequence alignments to calculate position-specific score matrices for each gene which are then normalized and transformed into probability values. PROVEAN (PROtein Variation Effect ANalyzer) similarly only takes into account sequence alignments. However, rather than just computing a position-specific score, PROVEAN calculates the difference in alignment quality between using the wildtype or variant sequence against clusters of homologous sequences. The average distance is then interpreted as indicative of the deleteriousness of the variant. 
 
 While the three tools succeed in making good predictions, their reliability is unfortunately still not high enough to serve as a basis of clinical decision making. Song Sun and other members of the Roth Lab recently performed an independent comparison of these tools on a set of well established disease-causing variants as well as rare polymorphisms with no known disease association~\cite{sun_extended_2016}. A high precision (the fraction of correct classifications out of all positive classifications) can be considered especially important when considering taking clinical action based on a prediction. When compared at a minimum precision level of 90\%, PolyPhen-2 and PROVEAN only reach a sensitivity of 19\% and 21\%, respectively (where sensitivity is defined as the fraction of correct classifications out of all real existing disease variants). SIFT was not even capable of achieving 90\% precision at any score threshold.
 
@@ -26,14 +26,14 @@ While the three tools succeed in making good predictions, their reliability is u
 
 An alternative to computational prediction for variant assessment is the use of laboratory assays. Many different types of assays exist that can yield potential insight into the effects of missense variants on protein function. However many of them, such as enzymatic activity assays need to be performed one by one and are not easily scalable. Two particularly useful assays in this respect are Yeast-2-Hybrid and functional complementation.
 
-Yeast-2-Hybrid (Y2H)~\cite{FieldsSongY2H} is a binary protein interaction assay performed within the yeast \species{Saccharomyces cerevisiae}. It is based on the reconstitution of two fragments of the transcription factor Gal4. The Gal4 protein comprises two domains: A DNA-binding (DB) domain and an activating domain (AD) both are required for it to successfully associate with its cognate promoter region and induce expression of a reporter gene downstream of the promoter. When two proteins X and Y are fused to the DB and AD domain respectively, an prospective interaction between X and Y leads to the reconstitution of the transcription factor and subsequently to reporter expression. In most cases, the reporter is an auxotrophy marker, such as \gene{HIS3}, thus linking the ability of the two proteins to interact with each other to the ability of the yeast strain to grow on selective media. When comparing different variants of the same protein interacting with the same partner, reporter expression has even been shown to be proportional to binding affinity~\cite{FieldsY2HAffinity}. This allows for quantitative interpretation of Y2H results under these specific circumstances. 
+Yeast-2-Hybrid (Y2H)~\cite{fields_novel_1989} is a binary protein interaction assay performed within the yeast \species{Saccharomyces cerevisiae}. It is based on the reconstitution of two fragments of the transcription factor Gal4. The Gal4 protein comprises two domains: A DNA-binding (DB) domain and an activating domain (AD) both are required for it to successfully associate with its cognate promoter region and induce expression of a reporter gene downstream of the promoter. When two proteins X and Y are fused to the DB and AD domain respectively, an prospective interaction between X and Y leads to the reconstitution of the transcription factor and subsequently to reporter expression. In most cases, the reporter is an auxotrophy marker, such as \gene{HIS3}, thus linking the ability of the two proteins to interact with each other to the ability of the yeast strain to grow on selective media. When comparing different variants of the same protein interacting with the same partner, reporter expression has even been shown to be proportional to binding affinity~\cite{yang_protein-peptide_1995}. This allows for quantitative interpretation of Y2H results under these specific circumstances. 
 
-Y2H does however suffer from a number of drawbacks. Due to the the transcription factor needing to physically associate with DNA, any protein to be examined needs to be able to enter the nucleus. While this issue is alleviated by the fusion with a nuclear localization sequence, it does not work for every protein~\cite{Y2Hnls}. A particular problem are membrane proteins which generally cannot enter the nucleus at all. A variant of Y2H, MYTH exists for these proteins~\cite{MYTH}. It has been estimated that Y2H has an overall assay sensitivity of 20\%. That is, only one in five real existing protein interactions can be detected by Y2H~\cite{Rual2012?}. These levels are comparable most other binary interaction assays, such as LUMIER~\cite{lumier} or MAPPIT~\cite{mappit}.
+Y2H does however suffer from a number of drawbacks. Due to the the transcription factor needing to physically associate with DNA, any protein to be examined needs to be able to enter the nucleus. While the DB domain already contains a nuclear localization sequence (NLS), the AD ORF is often the fused with an additional NLS. However, this does not work for every protein~\cite{van_criekinge_yeast_1999}. A particular problem are membrane proteins which generally cannot enter the nucleus at all. A variant of Y2H, MYTH exists for these proteins~\cite{snider_split-ubiquitin_2010}. It has been estimated that Y2H has an overall assay sensitivity of 20\%. That is, only one in five real existing protein interactions can be detected by Y2H~\cite{venkatesan_empirical_2009}. These levels are comparable most other binary interaction assays, such as PCA~\cite{tarassov_vivo_2008} or MAPPIT~\cite{eyckerman_design_2001}.
 
 %Explain difference between binary and complex interactions
 %Explain previous confusions about reproducibility originating from Ito et al.
 
-When considering Y2H as an assay for variant function assessment it is important to consider that it does not measure all aspects of a protein's functionality, but rather only its ability to physically associate with a given interaction partner. Thus only variants that result either in major failures in protein folding or in changes to the binding binding interface could be detected. However, in a recent examination of the Y2H performance of common disease associated variants, we found that approximately two out of three disease variants manifest in such a way~\cite{Sahni2015}. 
+When considering Y2H as an assay for variant function assessment it is important to consider that it does not measure all aspects of a protein's functionality, but rather only its ability to physically associate with a given interaction partner. Thus only variants that result either in major failures in protein folding or in changes to the binding binding interface could be detected. However, in a recent examination of the Y2H performance of common disease associated variants, we found that approximately two out of three disease variants manifest in such a way~\cite{sahni_widespread_2015}. 
 
 
 \begin{figure}[h!]
@@ -44,7 +44,7 @@ When considering Y2H as an assay for variant function assessment it is important
 \end{figure}
 %Discuss Edgotyping?
 
-Nonetheless, an assay that can measure the overall functionality of a protein within the cell would be preferable. Functional complementation~\cite{complementation} in yeast offers such an option. It based on the premise that some human genes can be used to rescue the deletion of their orthologues in yeast. That is, a fitness defect resulting from the inactivation of the yeast gene is alleviated by the artificial expression of the human gene. Therefore, any relative changes in fitness upon expressing a variant of the human gene can be interpreted as the variant's effect on the protein's overall ability to function. Song Sun and other members of the Roth Lab have recently examined the applicability of functional complementation in yeast to the assessment of disease variants~\cite{sun_extended_2016}. They have found an astonishing predictive capacity despite yeast and humans being diverged by a 1.5 billion year. Yeast complementation outperformed \textit{in silico} methods like PolyPhen-2 and PROVEAN in terms of disease variant prediction by a wide margin. At the 90\% specificity threshold discussed in section~\ref{insilicoIntro}, the complementation assay achieved a sensitivity of over 60\% (as compared to 19\% and 21\% for the two \textit{in silico} methods, respectively).
+Nonetheless, an assay that can measure the overall functionality of a protein within the cell would be preferable. Functional complementation~\cite{lee_complementation_1987} in yeast offers such an option. It based on the premise that some human genes can be used to rescue the deletion of their orthologues in yeast. That is, a fitness defect resulting from the inactivation of the yeast gene is alleviated by the artificial expression of the human gene. Therefore, any relative changes in fitness upon expressing a variant of the human gene can be interpreted as the variant's effect on the protein's overall ability to function. Song Sun and other members of the Roth Lab have recently examined the applicability of functional complementation in yeast to the assessment of disease variants~\cite{sun_extended_2016}. They have found an astonishing predictive capacity despite yeast and humans being diverged by a 1.5 billion year. Yeast complementation outperformed \textit{in silico} methods like PolyPhen-2 and PROVEAN in terms of disease variant prediction by a wide margin. At the 90\% specificity threshold discussed in section~\ref{insilicoIntro}, the complementation assay achieved a sensitivity of over 60\% (as compared to 19\% and 21\% for the two \textit{in silico} methods, respectively).
 
 The only major drawback of yeast complementation is that currently only 60 human genes have been found to be amenable to the assay~\cite{sun_extended_2016}. %mention future outlook on human cell complementation and CRISPR? 
 
@@ -53,25 +53,37 @@ The only major drawback of yeast complementation is that currently only 60 human
 
 \section{Deep Mutational Scanning}
 
-Complementation and Y2H promise to be useful tools in the classification of variants of uncertain significance. Yet applying them to retroactively test variants only once they have been found in the clinic would be a slow process. Instead, a proactive approach could prove to be more useful: Building an atlas of the functional effects of all possible variants before they are even seen in the clinic. This would require a massive parallelization of the assays. Indeed such parallelization efforts have previously been described, albeit not for the classification of VUS. Fowler and Fields have pioneered a technology called Deep Mutational Scanning (DMS)~\cite{fowler_high-resolution_2010}, which can be thought of as a natural extension to Alanine Scanning~\cite{AlanineScanning}, and has since inspired a fair number of similar efforts by other groups\cite{EverythingDMS}.
-Deep Mutational Scanning can be broken down into a number of experimental and computational steps: (1) Mutagenesis; (2) Library construction; (3) Selection of functional mutants; (4) Sequencing of the pre- and post-selection libraries; and (5) Statistical analysis to determine the quantitative enrichment resulting from the selection. 
+Complementation and Y2H promise to be useful tools in the classification of variants of uncertain significance. Yet applying them to retroactively test variants only once they have been found in the clinic would be a slow process. Instead, a proactive approach could prove to be more useful: Building an atlas of the functional effects of all possible variants before they are even seen in the clinic. This would require a massive parallelization of the assays. Indeed such parallelization efforts have previously been described, albeit not for the classification of VUS. Fowler and Fields have pioneered a technology called Deep Mutational Scanning (DMS)~\cite{fowler_high-resolution_2010}, which can be thought of as a natural extension to Alanine Scanning~\cite{cunningham_high-resolution_1989}, expanding it into the space of all possible amino acid changes. Fowler and Field's original paper has since inspired a fair number of similar efforts by other groups~\cite{ernst_coevolution_2010,fujino_robust_2012,adkar_protein_2012,mclaughlin_jr_spatial_2012,schlinkmann_critical_2012,whitehead_optimization_2012,traxlmayr_construction_2012,wu_systematic_2013,roscoe_analyses_2013,starita_activity-enhancing_2013,procko_computational_2013,tinberg_computational_2013,jiang_latent_2013,kim_high-throughput_2013,melamed_deep_2013,forsyth_deep_2013,wagenaar_resistance_2014,firnberg_comprehensive_2014,olson_comprehensive_2014,melnikov_comprehensive_2014,thyagarajan_inherent_2014,stiffler_evolvability_2015,doud_site-specific_2015,kitzman_massively_2015,starita_massively_2015,mishra_systematic_2016,doud_accurate_2016,mavor_determination_2016} (See Table~\ref{table:DMSstudies}). However, when considering these studies in the context of VUS classification, a number issues become apparent. Many of these have primarily used DMS in the context of biochemistry. The assays underlying different DMS studies are quite diverse and measure different aspects of a protein’s behaviour. As a consequence, they cannot be easily compared with each other. In addition, the achieved coverage of possible amino acid changes varies from map to map. Finally, many maps to do not control the quality of measurements. Therefore, the confidence levels underlying different parts of these maps are often unknown. A generalized framework that would allow for the construction of comparable, high-quality maps representing overall protein function would be of great utility.
 
-\begin{table}[h!]
+
+\begin{landscape}
+\begin{table}
+	\centering
+	\caption{Previous DMS studies}
+	\label{table:DMSstudies}
+	\input{table_DMSstudies}
+\end{table}
+\end{landscape}
+
+
+Nonetheless, the existing studies allow for a survey of available methodologies and the structures they have in common. Deep Mutational Scanning can be broken down into a number of experimental and computational steps: (1) Mutagenesis; (2) Library construction; (3) Selection of functional mutants; (4) Sequencing of the pre- and post-selection libraries; and (5) Statistical analysis to determine the quantitative enrichment resulting from the selection. 
+
+\begin{table}
 	\centering
 	\caption{Experimental steps in Deep Mutational Scanning}
 	\label{table:DMSphases}
 	\begin{tabular}{l p{10cm}}
-	%\hline
 	\textbf{Step}                & \textbf{Options} \\ \hline \hline
-	Step 1: Mutagenesis          & Error-prone PCR\\ %\hline
-	Step 2: Library construction & Phage\\ %\hline
-	Step 3: Selection            & Complementation, Y2H, Phage display, Viral replication\\ %\hline
-	Step 4: Sequencing           & BarSEQ, Deep Sequencing\\ %\hline
-	Step 5: Analysis             & Enrich2\\ %\hline
+	Step 1: Mutagenesis          & Error-prone PCR, Kunkel, Oligo Array, Gene Synthesis\\ 
+	Step 2: Library construction & Gibson Assembly, Gateway\\ 
+	Step 3: Selection            & Complementation, Y2H, Phage display, Viral replication\\ 
+	Step 4: Sequencing           & BarSEQ, Deep Sequencing\\ 
+	Step 5: Analysis             & Enrich2\\ 
 	\end{tabular}
 \end{table}
 
-The first step---mutagenesis---has been performed in different ways by different groups. The simplest method is error-prone PCR amplification\cite{oxPCRetc}. While this has the advantage of being an inexpensive and facile procedure, it will only result in the generation of point mutations and as such will not generate all possible amino acid replacements. One may argue that the evaluation of VUS does not require insight into mutations outside of this set, however at the expense of potentially valuable biochemical insights. Another method often employed is Kunkel mutagenesis~\cite{Kunkel}. Originally developed as a method for simple site-directed mutagenesis, it can be scaled up to address a combination of multiple sites at once. It uses a special strain of \species{E.~coli} that has been modified to produce high levels of uradine and lacks the ability to excise uracil bases from DNA. A phage vector carrying the desired template sequence is transfected into the cells resulting in its replication with a high uracil incorporation rate. The thus uracilated template can be PCR amplified with primers containing the mutations of interest and subsequently amplified in regular \species{E.~coli} which will degrade the uracilated template, thus enriching the mutant copies. %More 
+The first step---mutagenesis---has been performed in different ways by different groups. The simplest method is error-prone PCR amplification~\cite{firstErrorPronePCR,mohan_pcr_2011}. While this has the advantage of being an inexpensive and facile procedure, it will only result in the generation of point mutations and as such will not generate all possible amino acid replacements. One may argue that the evaluation of VUS does not require insight into mutations outside of this set, however at the expense of potentially valuable biochemical insights. Another method often employed is Kunkel mutagenesis~\cite{kunkel_rapid_1985}. Originally developed as a method for simple site-directed mutagenesis, it can be scaled up to address a combination of multiple sites at once. It uses a special strain of \species{E.~coli} that has been modified to produce high levels of uradine and lacks the ability to excise uracil bases from DNA. A phage vector carrying the desired template sequence is transfected into the cells resulting in its replication with a high uracil incorporation rate. The thus uracilated template can be PCR amplified with primers containing the mutations of interest and subsequently amplified in regular \species{E.~coli} which will degrade the uracilated template, thus enriching the mutant copies. %More
+A more recent development is the availabiltiy of custom oligonucleotide arrays covering all possible (or desired) options of codon changes~\todo{REF}. These can then be used in linear amplification reactions with the gene template. While this option allows for the precise control of desired mutations, it is currently too expensive to be applicable at genome-scale. Similarly, mutagenesis libraries are becoming commercially available via gene synthesis~\todo{REF}. While this method is certainly the most convenient, it is by far the most expensive option. A middle ground can be found in methods that~\todo{Shendure Mutagenesis}
 
 Library construction is the second step in any DMS experiment. The choice of method in this step is dependent on the type of selection and sequencing used in the later steps. Some methods require mutants to be tagged with molecular barcodes, i.e. short unique DNA sequences inserted at a known location that allow identification of a molecule with just a single sequencing read. While the use of barcodes greatly simplifies the readout of the selection result it does require that the contents of the library are catalogued at the time of construction.
 
@@ -80,47 +92,6 @@ Step three of a DMS procedure is the selection of mutants that pass a given assa
 The fourth step in the procedure is sequencing. 
 
 %The original method used phage display as a method of selection on an exhaustive library of mutant proteins followed by deep sequencing to identify which mutant proteins were enriched in the process. While the original method was developed as an extension to alanine scanning~\cite{alanineScanning} in the pursuit of biochemical insights, it can certainly be adapted to work with other selection methods such as Y2H and complementation. Indeed, \todo{Who?} and colleagues have recently adapted it to the use of complementation as a means of selection.
-
-\begin{landscape}
-\begin{table}[h!]
-	\centering
-	\caption{Previous DMS studies}
-	\label{table:DMSstudies}
-	\begin{tabular}{l l l l l l l}
-	\textbf{Year} & \textbf{Authors} & \textbf{Protein} & \textbf{Region} & \textbf{Saturation} & \textbf{Selection} \\ \hline \hline
-2010 & Fowler~\etal~\cite{fowler_high-resolution_2010} & YAP65 & WW domain & Very high & Phage display \\  
-2010 & Ernst~\etal & Synthetic protein & PDZ domain & ? & Phage display \\ 
-2012 & Fujino~\etal & Fab antibody fragment & fragment & Very high & Ribodisplay \\ 
-2012 & Adkar~\etal & Ccdb & whole protein & ? & Toxin activity in \species{E.~coli}\\ 
-2012 & McLaughlin~\etal & PSD95 & PDZ domain & Very high & B2H+FACS (\species{E.~coli})\\ 
-2012 & Schlinkmann~\etal & GPCR & whole protein & High & FACS (\species{E.~coli})\\ 
-2012 & Whitehead~\etal & Synthetic protein & whole protein & Very high & Yeast display \\ 
-2012 & Traxlmayr~\etal & IgG1 & CH2/CH3 domains & ? & Yeast display \\ 
-2012 & Wu~\etal & Neuraminidase & SNP accessible & ? & Drug resistance (H1N1)\\ 
-2013 & Roscoe~\etal & Ubiquitin & whole protein & High & Yeast growth\\ 
-2013 & Starita~\etal & Ub.E3 E4B & whole protein & Low & Phage display\\ 
-2013 & Procko~\etal  & Synthetic protein & 60AA & Very high & Yeast display\\ 
-2013 & Tinberg~\etal  & Synthetic protein & 40AA & High & Yeast display\\ 
-2013 & Jiang~\etal  & Hsp90 & substrate binding loop & Very high & Yeast complementation\\ 
-2013 & Kim~\etal  & Mat alpha  & degron region & ? & Yeast growth\\ 
-2013 & Melamed~\etal  & Pab1 & RRM domain & High & Yeast complementation\\ 
-2013 & Forsyth~\etal  & Antibody for EGFR & whole protein & Very high & Human cell display\\ 
-2013 & Wagenaar~\etal  & BRAF & 77 Aas & ? & Drug resistance (Human)\\ 
-2014 & Firnberg~\etal  & TEM1-beta lactamase & Whole protein & High & Drug resistance (\species{E.~coli})\\ 
-2014 & Olson~\etal  & G protein (GB1) & IgG-binding domain & High & RNA display\\ 
-2014 & Melnikov~\etal  & APH(3′)II (kinase) & whole protein & Very high & Drug resistance (\species{E.~coli})\\ 
-2014 & Thyagarajan~\etal  & hemagglutinin & whole protein & ? & Viral replication (H1N1)\\ 
-2015 & Stiffler~\etal  & TEM1 Beta-lactamase & whole protein & Very high & \species{E.~coli} growth\\ 
-2015 & Doud~\etal  & influenza nucleoprotein & whole protein & ? & Viral replication (H1N1)\\ 
-2015 & Kitzman~\etal  & Gal4 & DB domain & Very high & Yeast growth \\ 
-2015 & Starita~\etal  & BRCA1 & RING domain & Low & Y2H + E3 activity\\ 
-2016 & Mishra~\etal  & Hsp90 & ATPase domain & Very high & Yeast growth\\ 
-2016 & Doud~\etal  & Hemagglutinin & whole protein & ? & Viral replication (H1N1)\\ 
-2016 & Mavor~\etal  & Ubiquitin & whole protein & Very high & Yeast growth\\ 
-
-	\end{tabular}
-\end{table}
-\end{landscape}
 % \section{Edgotyping}
 
 \section{Background: The Sumoylation Pathway}
