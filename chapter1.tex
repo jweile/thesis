@@ -4,7 +4,7 @@
 
 \section{Introduction}
 
-\todo{Cast this introduction more in the light of functional assays and less about disease. Save that for the next chapter.}
+\todo{Cast this introduction more in the light of functional assays and less about disease. (Save that for the next chapter.)}
 
 Deep Mutational Scanning~(DMS)~\cite{fowler_high-resolution_2010}, a strategy for large-scale functional testing of variants, is yielding functional maps describing a large fraction of substitutions for an often substantial subset of residue positions. The assays used for DMS studies are diverse, often measuring different aspects of a protein's behaviour. Functional complementation assays test a variant's impact on overall protein function by testing the variant gene's ability to rescue the phenotype caused by reduced activity of the wild type gene (or its ortholog in the case of trans-species complementation)~\cite{lee_complementation_1987,osborn_rescuing_2007}. In a previous paper, Song Sun and other members of the Roth Lab have previously found cell-based functional complementation assays to accurately identify disease variants across a diverse collection of human disease genes~\cite{sun_extended_2016}. 
 
@@ -201,19 +201,41 @@ Finally, towards stage 6 of the framework, we wished to address cases in which e
 \todo{At this point it would be nice to show off the value of the regularization, but for the unflipped UBE2I map it doesn't improve anything. The flipped maps, especially for TPK1 and CALM1 benefit much more from regularization. It would also be great if we could point to the spotting assay, but we didn't test any poorly measured clones, so we don't have any interesting data there.}
 
 % \subsection{Evaluation and validation of the UBE2I map}
-To evaluate the complete map, we once more applied manual complementation assays to a set of variants that represented the full range of fitness scores.  DMS fitness scores corresponded closely with manual assays (Supplementary Figure S4A), thus validating our framework.  To more specifically evaluate the imputation process, we selected a smaller test set of variants (again spanning the range of scores), and recalculated imputation scores using a training set that excluded variants in this test set.  Collectively, our framework yielded a comprehensive map covering all possible missense variants, with overall quality that was on par with the highest-quality measurements from either screen alone.
+To evaluate the complete map, we once more applied manual complementation assays to a set of variants that represented the full range of fitness scores.  DMS fitness scores corresponded closely with manual assays (Figure~\ref{fig:imputation}E), thus validating our framework.  To more specifically evaluate the imputation process, we selected a smaller test set of variants (again spanning the range of scores), and recalculated imputation scores using a training set that excluded variants in this test set.  Collectively, our framework yielded a comprehensive map covering all possible missense variants, with overall quality that was on par with the highest-quality measurements from either screen alone.
 
-The complete, refined functional map of UBE2I after imputation and regularization can be seen in Figure 2A. 
+The complete, refined functional map of UBE2I after imputation and regularization can be seen in Figure~\ref{fig:ube2i-map}. For comparison, additional tracks showing position-specific evolutionary conservation, secondary  structure, relative solvent accessibility and burial in protein-protein interaction interfaces are also shown.  
 
+\begin{landscape}
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=\textwidth]{img/ube2i_map.pdf}
-	\caption{UBE2I map}
+	\includegraphics[width=9in]{img/ube2i_map.pdf}
+	\caption{Functional map of UBE2I. From top to bottom: Position-wise evolutionary conservation (AMAS); Secondary structure; Relative solvent accessibility; Relative burial in protein-protein interaction interfaces with covalently bound SUMO, non-covalently bound SUMO, the SUMO E1 complex at two different stages of activation, the sumoylation substrate RanGAP1, the E3 RanBP2, and the UBE2I homodimer; A summary track showing the relative number of amino acid changes resulting in different fitness effects; and finally the individual amino acid change effects sorted by physicochemical groups.}
 	\label{fig:ube2i-map}
 \end{figure}
+\end{landscape}
+
+
+\section{Discussion}
+
+Here we have demonstrated the capabilities of a new improved Deep Mutational Scanning framework that uses functional complementation in yeast to map the impact of mutations on the overall ability of a protein to function. We integrated a machine learning-based imputation and regularization strategy into the deep mutational scanning process, to allow the first DMS scans that are complete with respect to high-quality functional impact scores over the full length of a protein.
+
+The two versions of DMS we described, DMS-BarSeq and DMS-TileSeq, each have advantages and limitations. DMS-BarSeq permits study of the combined effects of mutations located at any distance along the clone, and therefore can reveal intramolecular genetic interactions.  Mutant clones produced for DMS-BarSeq are arrayed, sequenced and indexed which can enable follow up investigation of individual variants. DMS-BarSeq can directly compare growth of any clone to null and wild type controls, resulting in an intuitive scoring scheme. However, the cost of arraying and sequencing clones for DMS-BarSeq renders it more costly and labour intensive, even given the efficient KiloSeq strategy. By contrast, the regional sequencing strategy of DMS-TileSeq is substantially more efficient, but can only analyze fitness of those double mutant combinations that fall within the same tile. 
+
+The use of codon-replacement mutagenesis allowed us to observe a fuller repertoire of amino-acid substitutions than single-nucleotide mutagenesis would have allowed (only ~30\% of all possible amino acid substitutions are accessible by single nucleotide mutation).  However, given that the majority of missense variants observed on individual genome are single-nucleotide variants29, one might reasonably wonder whether codon mutagenesis is worth carrying out in addition to single-nucleotide mutagenesis.  We see three arguments for using codon-level mutagenesis to reveal the impact of all 19 possible amino acid substitutions at each position:  1) a full picture of functional missense variation enables a clearer understanding of what biochemical properties required of each functionally important residue; 2) an analysis of >60,000 unphased human exomes29 found that each individual human harbors ~23 codons containing multiple nucleotide variants that collectively encode an amino acid not encoded by either single variant; 3) it seems likely that, going forward, the dominant cost of DMS will be development and validation of the functional assay, so that carrying out codon-level mutagenesis instead of (or in addition to) nucleotide-level mutagenesis has a relatively small impact on overall cost.
 
 
 \section{Methods}
 
-\section{Discussion}
+\subsection{POPCode mutagenesis and library construction}
 
+\subsection{KiloSEQ and library condensation}
+
+\subsection{Complementation growth competition experiment}
+
+\subsection{BarSEQ}
+
+\subsection{TileSEQ}
+
+\subsection{Data analysis pipeline}
+
+\subsection{Complementation spotting assays}
