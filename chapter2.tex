@@ -23,8 +23,7 @@ The DMS map of UBE2I produced in the previous chapter paints a comprehensive pic
 
 An interesting feature of the map is the alternating tendency towards damaging and benign substitutions across positions 55-65. A comparison with solvent accessibility reveals this to be caused by alternating externally and internally-oriented residues, with the latter positions constrained to be hydrophobic. This alternating tendency is also reflected in evolutionary conservation across these positions. 
 
-All protein-protein interaction interfaces previously captured in co-crystal show increased sensitivity to mutation when compared to other surface residues (Figure~\ref{fig:ube2i_interfaces}). When comparing individual protein interaction interfaces, the most substantial fitness defects are observed in those for the E1 activating complex binding interface and the covalent and noncovalent SUMO binding interfaces (Figure~\ref{fig:ube2i_interfaces}A). While the homodimerization interface also shows significant sensitivity, the effects are not as severe as those at the E1 interface (Figure~\ref{fig:ube2i_interfaces}B). This is consitent with the Alontaga and colleagues' hypothesis regarding its involvement in SUMO chaining~\cite{alontaga_rwd_2015}, as in yeast SUMO chain formation has so far only been observed to be involved in meiosis, which is not a mechanism vital to fitness in a complementation assay. Alontaga \etal also postulate however, that noncovalent SUMO binding is necessary for SUMO chain formation. In contrast to the homodimerization interface, the noncovalent SUMO binding interface shows a very strong sensitivity to mutation. This may be due to two different reasons: (i) there is a 27\% overlap between the interface for noncovalent SUMO binding interface and the interface for E1-E2 binding, which is among the most sensitive surfaces in UBE2I; and (ii) noncovalent SUMO binding also plays an important role as an adapter for many E3 proteins~\cite{cappadocia_structural_2015}.
-%FIXME: Cappadocia: Structural basis for catalytic activation by the human ZNF451 SUMO E3 ligase
+All protein-protein interaction interfaces previously captured in co-crystal show increased sensitivity to mutation when compared to other surface residues (Figure~\ref{fig:ube2i_interfaces}). When comparing individual protein interaction interfaces, the most substantial fitness defects are observed in those for the E1 activating complex binding interface and the covalent and non-covalent SUMO binding interfaces (Figure~\ref{fig:ube2i_interfaces}A). While the homodimerization interface also shows significant sensitivity, the effects are not as severe as those at the E1 interface (Figure~\ref{fig:ube2i_interfaces}B). This is consistent with the Alontaga and colleagues' hypothesis regarding its involvement in SUMO chaining~\cite{alontaga_rwd_2015}, as in yeast SUMO chain formation has so far only been observed to be involved in meiosis, which is not a mechanism vital to fitness in a complementation assay. Alontaga \etal also postulate however, that non-covalent SUMO binding is necessary for SUMO chain formation. In contrast to the homodimerization interface, the non-covalent SUMO binding interface shows a very strong sensitivity to mutation. This may be due to two different reasons: (i) there is a 27\% overlap between the interface for non-covalent SUMO binding interface and the interface for E1-E2 binding, which is among the most sensitive surfaces in UBE2I; and (ii) non-covalent SUMO binding also plays an important role as an adapter for many E3 proteins~\cite{cappadocia_structural_2015}.
 
 
 \begin{figure}[h!]
@@ -34,8 +33,8 @@ All protein-protein interaction interfaces previously captured in co-crystal sho
 	\label{fig:ube2i_interfaces}
 \end{figure}
 
-Another interesting observation can be made with respect to a known phosphorylation site on the surface of UBE2I. Su and colleagues previously discovered that phosphorylation of Serine 71 via the Cyclin-dependent Kinase CDK1 results in sumoylation hyperactivity~\cite{su_phosphorylaton_2012}. Our map shows that substitutions with phosphomimetic residues at this position lead to hyperactive complementation, consistent with Su \etal.'s observations. Furthermore, other residues amenable to phosphorylation are also tolerated, while hydrophobic replacements are generally deleterious (Figure~\ref{fig:phosphosite}).
-%FIXME: Su2012: Phosphorylation of Ubc9 by Cdk1 enhances SUMOylation activity
+Another interesting observation can be made with respect to a known phosphorylation site on the surface of UBE2I. Su and colleagues previously discovered that phosphorylation of Serine 71 via the Cyclin-dependent Kinase CDK1 results in sumoylation hyperactivity~\cite{su_phosphorylation_2012}. Our map shows that substitutions with phosphomimetic residues at this position lead to hyperactive complementation, consistent with Su~\etal's observations. Furthermore, other residues amenable to phosphorylation are also tolerated, while hydrophobic replacements are generally deleterious (Figure~\ref{fig:phosphosite}).
+
 
 \begin{figure}
 	\centering
@@ -69,15 +68,15 @@ As Figure~\ref{hyperactive}D shows, substrate specificity does not paint a compl
 
 It is unclear how to interpret the effect of mutations that enhance growth in the yeast complementation assay. If fitness measured in the assay is directly proportional to fitness in the real biological context, then these enhancing mutations would be beneficial. However one can also imagine an alternative scenario in which activity-enhancing mutations are deleterious in the real biological context. To objectively distinguish between these possibilities, we collaborated with Jesse Bloom to employ a method he recently published that leverages likelihood-based phylogenetics to quantitatively compare how well different experimental measurements represent actual evolutionary constraints in nature~\cite{bloom_experimentally_2014,bloom_identification_2017}. We compared three models relating the experimental fitness to the evolutionary preference for a mutated amino-acid sequence: (a) the evolutionary preference was directly proportional to the untransformed experimental fitness; (b) the preference had a ceiling at the wildtype experimental fitness (values greater than 1 were set to 1); or (c) the preference was set to the reciprocal of fitness for mutations with greater-than-wildtype scores, corresponding to a deleterious effect of enhancing mutations. Dr. Bloom kindly provided the phydms software~\cite{bloom_identification_2017} to test which of these three approaches best described the evolutionary constraint on a set of naturally occurring UBE2I homologs, using fitness scores that excluded conservation features from the regularization process, to avoid the circularity of using natural sequence data when deriving the scores. As shown in Table~\ref{tab:phydms}, the best fit is achieved using the model that assumes that enhancing mutations are deleterious. This result provides objective support for the idea that mutations that enhance activity above wildtype levels in the complementation assay are actually deleterious in a real biological context.
 
-Based on these observations we reinterpreted cases of hyperactive complementation in our map as deleterious and repeated the imputation and regularization procedure. This lowered the cross-validation RMSD substantially from $0.33$ to $0.24$.
+Based on these observations we reinterpreted cases of hyperactive complementation in our map as deleterious and repeated the imputation and regularization procedure. This lowered the cross-validation RMSD substantially, from $0.33$ to $0.24$.
 
 \begin{table}[h!]
 	\centering
 	\caption{Comparison of different models for the effects of hyperactivating mutations. AIC: Akaike Information Criterion\newline}
-	\begin{tabular}{l l}
-Model & $\Delta$AIC relative to best model\\ \hline\hline
-Penalize hyperactive mutations & 0\\
-Cap score of hyperactive mutations at wildtype level & 27.7\\
+	\begin{tabular}{l r}
+Model & \parbox[t]{1in}{$\Delta$AIC relative\newline to best model}\\ \hline\hline
+Hyperactive mutations as deleterious & 0\\
+Hyperactive mutations as WT & 27.7\\
 Hyperactive mutations as beneficial	& 60.6	
 	\end{tabular}
 	\label{tab:phydms}
@@ -87,7 +86,7 @@ Hyperactive mutations as beneficial	& 60.6
 
 \subsubsection{Intragenic epistasis and compensatory mutations}
 
-Full-length UBE2I clones generated for DMS-BarSEQ analysis often encoded more than one amino acid change. Multi-mutant clones offer the opportunity to search for intragenic genetic interactions. Genetic interaction is defined when a combination of mutations yields an unexpected phenotypic effect, so that identifying genetic interactions requires that we model the phenotype expected from a combination of mutations, given the single-mutant effects.  Here we used a previously-described multiplicative model 20,21 in which genetic interaction is measured as $\varepsilon_{ij} = f_i \cdot f_j - f_{ij}$, where $f_i$ and $f_j$ represent single mutant fitness and fij represents double mutant fitness scores. Most double mutants (71\%) did not show a significant deviation from $\varepsilon_{ij} = 0$ under this model, while 328 position pairs did show significant genetic interaction (Figure~\ref{fig:epsistasis}, see Methods). Of particular interest are compensatory interactions, i.e. cases where a double mutation is more fit than either of the component single mutations.  Where compensatory residues are proximal in the protein structure, the combination of two mutant residues may be able to re-establish a physical interaction that was lost in each of the single mutants. Although the majority of genetically interacting sites were not proximal in the structure (Figure~\ref{fig:epsistasis}B), there were interesting exceptions. For example, the I4T-P69S double mutant appears to exhibit compensatory behaviour: In the wild type structure, the van-der-Waals radii of the two residues are in direct contact (Figure~\ref{fig:epsistasis}C). Either mutation alone would be expected to destabilize the hydrophobic interaction between isoleucine and proline.  However, In the double mutant, hydroxyl groups on the two residues could adopt a hydrogen bond that re-establishes interaction and re-stabilizes the fold (Figure~\ref{fig:epsistasis}D).
+Full-length UBE2I clones generated for DMS-BarSeq analysis often encoded more than one amino acid change. Multi-mutant clones offer the opportunity to search for intragenic genetic interactions. Genetic interaction is defined when a combination of mutations yields an unexpected phenotypic effect, so that identifying genetic interactions requires that we model the phenotype expected from a combination of mutations, given the single-mutant effects.  Here we used a previously-described multiplicative model 20,21 in which genetic interaction is measured as $\varepsilon_{ij} = f_i \cdot f_j - f_{ij}$, where $f_i$ and $f_j$ represent single mutant fitness and fij represents double mutant fitness scores. Most double mutants (71\%) did not show a significant deviation from $\varepsilon_{ij} = 0$ under this model, while 328 position pairs did show significant genetic interaction (Figure~\ref{fig:epsistasis}, see Methods). Of particular interest are compensatory interactions, i.e. cases where a double mutation is more fit than either of the component single mutations.  Where compensatory residues are proximal in the protein structure, the combination of two mutant residues may be able to re-establish a physical interaction that was lost in each of the single mutants. Although the majority of genetically interacting sites were not proximal in the structure (Figure~\ref{fig:epsistasis}B), there were interesting exceptions. For example, the I4T-P69S double mutant appears to exhibit compensatory behaviour: In the wild type structure, the van-der-Waals radii of the two residues are in direct contact (Figure~\ref{fig:epsistasis}C). Either mutation alone would be expected to destabilize the hydrophobic interaction between isoleucine and proline.  However, In the double mutant, hydroxyl groups on the two residues could adopt a hydrogen bond that re-establishes interaction and re-stabilizes the fold (Figure~\ref{fig:epsistasis}D).
 
 \begin{figure}[h!]
 	\centering
@@ -127,16 +126,38 @@ The proximity and orientation of aspartate \#73 and lysine \#48 suggests that th
 
 \subsection{Functional maps of three human disease genes}
 
-Having established and evaluated our Deep Mutational Scanning framework on two members of the sumoylation pathway, we aimed to create maps for a diverse set of genes that have been associated with disease with varying degrees of confidence. While  heterozygous null mutations in SUMO1 have previously been associated with cleft palate, we wished to create maps that could be tested in the context of variant classification in terms of disease. Based on the availability of robust complementation assays, we applied DMS-TileSeq to the following protein targets: Thiamine Pyrophosphokinase 1 (TPK1), associated with vitamin B1 metabolism dysfunction; Neuronal Calcium Sensor 1 (NCS1), which has been implicated in autism based on a single \textit{de novo} mutation;  and CALM1, CALM2 and CALM3 associated with heart conditions long-QT syndrome and catecholaminergic polymorphic ventricular tachycardia. Although the three calmodulin genes differ in nucleotide sequence, each encodes the same polypeptide sequence. Thus, we performed a deep mutational scan only for CALM1, which enabled us to also map missense variant effects in CALM2 and CALM3. In each case, we used the TileSEQ approach coupled with complementation to generate a map of missense variant functions. 
+Having established and evaluated our Deep Mutational Scanning framework on two members of the sumoylation pathway, we aimed to create maps for a diverse set of genes that have been associated with disease with varying degrees of confidence. While  heterozygous null mutations in SUMO1 have previously been associated with cleft palate, we wished to create maps that could be tested in the context of variant classification in terms of disease. Based on the availability of robust complementation assays, we applied DMS-TileSeq to the following protein targets: Thiamine Pyrophosphokinase 1 (TPK1), associated with vitamin B1 metabolism dysfunction; Neuronal Calcium Sensor 1 (NCS1), which has been implicated in autism based on a single \textit{de novo} mutation;  and CALM1, CALM2 and CALM3 associated with heart conditions long-QT syndrome and catecholaminergic polymorphic ventricular tachycardia. Although the three calmodulin genes differ in nucleotide sequence, each encodes the same polypeptide sequence. Thus, we performed a deep mutational scan only for CALM1, which enabled us to also map missense variant effects in CALM2 and CALM3. In each case, we used the TileSeq approach coupled with complementation to generate a map of missense variant functions. 
 
-As was shown above for UBE2I, phylogenetic analysis of SUMO1 similarly showed that variants with ability to complement yeast better than wild-type are likely deleterious in humans. We therefore transformed fitness scores so that such adaptive mutations are considered to be deleterious \todo{expand on this}. The transformed disease gene maps can be seen in Figures \ref{fig:tpk1-map} and \ref{fig:calm+ncs1-maps}).  However, because adaptive substitutions may provide interesting clues about differences between yeast and human cellular contexts, we also provide untransformed versions of each map (see Appendix).
+
+\begin{table}
+	\centering
+	\caption{Map quality comparison. RMSD: Root-Mean-Squared-Deviation in $10\times$ cross validation. $\max(\sigma_{\bar{x}})$: maximal standard error across non-imputed values in the map.\newline}
+	\begin{tabular}{l p{.9in} p{.9in} p{1in} p{1in} p{1in}}
+\textbf{Gene} & 
+\textbf{Possible AA~changes} & 
+\textbf{Achieved AA~changes} & 
+\textbf{Imputation RMSD} & 
+\textbf{Experimental $\max(\sigma_{\bar{x}})$} & 
+\textbf{Regularized $\max(\sigma_{\bar{x}})$} \\ \hline\hline
+\textbf{UBE2I} & 3021 & 2563 (85\%) & 0.24 & 0.36 & 0.25 \\
+\textbf{SUMO1} & 1919 & 1700 (89\%) & 0.25 & 0.19 & 0.17 \\
+\textbf{TPK1} & 4617 & 3181 (69\%) & 0.34 & 0.49 & 0.37 \\
+\textbf{CALM1} & 2831 & 1813 (64\%) & 0.29 & 0.28 & 0.22 \\
+\textbf{NCS1} & 3610 & 2542 (70\%) &  0.63 & 1.84 & 0.97
+	\end{tabular}
+	\label{tab:summary}
+\end{table}
+
+
+
+As was shown above for UBE2I, phylogenetic analysis of SUMO1 similarly showed that variants with ability to complement yeast better than wild-type are likely deleterious in humans. We therefore transformed fitness scores so that such adaptive mutations are considered to be deleterious \todo{expand on this}. The transformed disease gene maps can be seen in Figures \ref{fig:tpk1-map} and \ref{fig:calm+ncs1-maps}.  However, since adaptive substitutions may provide interesting clues about differences between yeast and human cellular contexts, we also provide untransformed versions of each map (see Appendix).
 
 %%FIGURE: Map for TPK1/NCS1/CALM1
 
 
 \subsubsection{A thiamine pyrophosphokinase map reflects a recessive phenotype}
 
-Thiamine pyrophosphokinase (TPK1) is a protein that forms a dimer to perform its biochemical function. Its substrate, thiamine diphosphate, is bound within two active sites formed by the dimerization interface\cite{timm_crystal_2001}. That is, each monomer contributes half of the residues making up each of the two active sites.  Each monomer in turn is made up of an N-terminal globular domain and a C-terminal $\beta$-sandwich domain (Figure~\ref{fig:tpk1_structure}A). The residues most sensitive to mutation in the protein make up the hydrophobic cores of the two domains: L21, V22, W36, G48, Y53, P65, G70, Y83, L108, I122, T124, and G127 for the N-terminal domain; and L161, G168, G199, L200, V227, V229, L236, and W237 for the C-terminal domain (Figure~\ref{fig:tpk1_structure}B). As might have been expected, mutation-sensitive residues include those closely involved in forming the active sites: D46, G70, D71, D73, D100, and K103 in the N-terminal half of the active site , contacting the diphosphate portion of the substrate (Figure~\ref{fig:tpk1_structure}C). In the C-terminal half of the active site, K203, L209, G212, L214, S216, T217, and N219 show similar sensitivity. Interestingly, the tryptophan residue at position 202 appears to be insensitive to mutation despite its close and extensive contact with the thiamine ligand. By contrast, a neighbouring lysine at position 201 is surprisingly sensitive suggesting potential importance in coordinating the ligand.  The remainder of the dimerization interface also features a number of sensitive residues, such as M136, G184, V188, G189 and G211. Finally, residues 1-12, which form a $\beta$-strand anchoring the N-terminal domain back to the C-terminal domain were also found to be sensitive.
+Thiamine pyrophosphokinase (TPK1) is a protein that forms a dimer to perform its biochemical function. Its substrate, thiamine diphosphate, is bound within two active sites formed by the dimerization interface~\cite{timm_crystal_2001}. That is, each monomer contributes half of the residues making up each of the two active sites.  Each monomer in turn is made up of an N-terminal globular domain and a C-terminal $\beta$-sandwich domain (Figure~\ref{fig:tpk1_structure}A). The residues most sensitive to mutation in the protein make up the hydrophobic cores of the two domains: L21, V22, W36, G48, Y53, P65, G70, Y83, L108, I122, T124, and G127 for the N-terminal domain; and L161, G168, G199, L200, V227, V229, L236, and W237 for the C-terminal domain (Figure~\ref{fig:tpk1_structure}B). As might have been expected, mutation-sensitive residues include those closely involved in forming the active sites: D46, G70, D71, D73, D100, and K103 in the N-terminal half of the active site , contacting the diphosphate portion of the substrate (Figure~\ref{fig:tpk1_structure}C). In the C-terminal half of the active site, K203, L209, G212, L214, S216, T217, and N219 show similar sensitivity. Interestingly, the tryptophan residue at position 202 appears to be insensitive to mutation despite its close and extensive contact with the thiamine ligand. By contrast, a neighbouring lysine at position 201 is surprisingly sensitive suggesting potential importance in coordinating the ligand.  The remainder of the dimerization interface also features a number of sensitive residues, such as M136, G184, V188, G189 and G211. Finally, residues 1-12, which form a $\beta$-strand anchoring the N-terminal domain back to the C-terminal domain were also found to be sensitive.
 
 \begin{landscape}
 \begin{figure}[h!]
@@ -183,7 +204,7 @@ For TPK1, a large number of very rare variants (minor allele frequency or $\text
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\textwidth]{img/diploid.pdf}
-	\caption{TPK1 variants}
+	\caption{Variant classificationin TPK1. A) Distribution of functional scores for rare polymorphisms (GnomAD) (green) and pathogenic and benign variants (ClinVar) (red, blue) in TPK1 overlaid on a histogram of functional scores for all missense variant. Top panel: Haploid scores considering the phenotype based only on a single allele. Bottom panel: Diploid scores, considering the phenotype based on both alleles in each individual. B) Precision-Recall-Curve for disease variant classification using diploid scores from the atlas presented here, PROVEAN and PolyPhen-2, based on the data from (A).}
 	\label{fig:tpk1_diploid}
 \end{figure}
 
@@ -197,21 +218,41 @@ Finally, we examined our functional map of Calmodulin and found that it was able
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\textwidth]{img/calm_disease.pdf}
-	\caption{Calmodulin variants}
+	\caption{Detection of disease-associated variants. A) Distributions of functional scores for rare polymorphisms (GnomAD) (green) and for somatic in cancer (COSMIC) (gold) in UBE2I, SUMO1 and NCS1. B) Distribution of functional scores for rare polymorphisms (GnomAD) (green) and known pathogenic alleles (ClinVar) (red) in CALM1, CALM2 and CALM3, overlaid on a histogram of all missense variant scores (gray). C) Precision-Recall-Curves for classification of disease variants using the variant atlas presented here, PROVEAN and PolyPhen-2 in CALM1, CALM2 and CALM3 based on rare polymorphisms from GnomAD and pathogenic variants from ClinVar.}
 	\label{fig:calm_disease}
 \end{figure}
 
 
 To further put our map to the test in a clinical scenario we inquired with Invitae, a company offering gene panel sequencing services for Long QT syndrome, including CALM1/2/3. In a blind test, we requested a list of Calmodulin variants they observed in patients but were unable to classify. After calibrating our map with respect to the above ClinVar and GnomAD datasets, we classified these 10 new variants (Table~\ref{tab:invitae}). Two were classified as damaging, six as benign, and two were too close to the threshold to be called either. In the next phase, Invitae revealed the associated patient cardiovascular phenotypes. Five out of the six patients with benign predictions were revealed to be healthy, while both patients with damaging predictions did show a positive phenotype. The two uncertain cases were revealed to be affected as well. A Mann-Whitney-U test showed these results to be statistically significant (P = 0.008).
 
+\begin{table}
+	\centering
+	\caption{Re-classification attempt for variants of uncertain significance found in Invitae gene panel sequencing. MAF: Minor allele frequency in GnomAD, if known; sd/rmsd: standard error or RMSD of observation in map. imp/reg: imputed or degree of regularization; DMS score pre-regularization; DMS score post-regularization; DMS call: Classification according to DMS score; Indication: Type of sequencing panel ordered.\newline}
+	%using a pdf file with individually colored cells
+	\includegraphics[width=\textwidth]{img/invitae.pdf}
+	\label{tab:invitae}
+\end{table}
+
 % \begin{table}
 % 	\centering
 % 	\caption{}
-% 	\begin{tabular}{l l l}
-		
+% 	\begin{tabular}{l l l l l l l l}
+% Variant & MAF & sd/rmsd & imp/reg & pre-reg & DMS & DMS call & indication \\ \hline\hline
+% D94A & NA & 0.26 & imputed & NA & 0.46 & likely damaging & Cardio \\
+% D96H & NA & 0.26 & imputed & NA & 0.72 & likely damaging & Cardio \\
+% I28V & $1 \cdot 10^{-5}$ & 0.05 & mild & 0.88 & 0.88 & uncertain & Cardio \\
+% N98S & NA & 0.05 & mild & 0.89 & 0.89 & uncertain & Cardio \\
+% T35I & $4 \cdot 10^{-6}$ & 0.04 & mild & 0.93 & 0.93 & likely benign & Non-Cardio \\
+% E48G & NA & 0.05 & mild & 0.93 & 0.93 & likely benign & Cardio \\
+% G26D & NA & 0.06 & mild & 0.94 & 0.94 & likely benign & Non-Cardio \\
+% T27S & $3 \cdot 10^{-5}$ & 0.05 & mild & 0.96 & 0.96 & likely benign & Non-Cardio \\
+% V122A & NA & 0.05 & mild & 0.98 & 0.98 & likely benign & Non-Cardio \\
+% A104G & NA & 0.08 & mild & 1.00 & 1.00 & likely benign & Non-Cardio
 % 	\end{tabular}
 % 	\label{tab:invitae}
 % \end{table}
+
+
 
 \section{Discussion}
 
