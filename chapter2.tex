@@ -9,13 +9,13 @@ Recent DMS studies have provided individual maps the critical RING domain of BRC
 
 In the previous chapter, we established a framework for comprehensive high-quality screening of the functional effects across all possible missense mutations in human genes. The functional complementation assay used in the assay allows for the generation of maps that not only represent the overall functional consequences of mutations, but also serves as a common basis to make maps more directly comparable. In addition, the statistical analysis and machine learning component we introduced supports allows for high overall map quality and completeness. Using this framework we have created a complete functional map for the SUMO E2 conjugase UBE2I. Here we create a map of a second member of the Sumoylation pathway, SUMO1. We examine both map in detail before discussing the interpretation of yeast complementation phenotypes in terms of humans. 
 
-To demonstrate the value of our frameworks in terms of clinical interpretation of variants, we proceed to add a diverse set of six new disease gene maps to our atlas: TPK1 encoding Thiamin Pyrophosphokinase 1, NCS1 encoding Neuronal Calcium Sensor 1, as well as the paralogues CALM1, CALM2 and CALM3, which each encode the protein Calmodulin. We evaluate the maps in terms of pathogenicity prediction and VUS reclassification.
+To demonstrate the value of our frameworks in terms of clinical interpretation of variants, we proceed to add a diverse set of six new disease gene maps to our atlas: \gene{TPK1} encoding Thiamin Pyrophosphokinase 1, \gene{NCS1} encoding Neuronal Calcium Sensor 1, as well as the paralogues \gene{CALM1}, \gene{CALM2} and \gene{CALM3}, which each encode the protein Calmodulin. We evaluate the maps in terms of pathogenicity prediction and VUS reclassification.
 
 \section{Results}
 
 % \todo{Outline the structure of the results section}
 
-\subsection{Functional map of SUMO E2 recapitulates known biology and poses new questions}
+\subsection{A functional map of SUMO E2 recapitulates known biology and poses new questions}
 
 % \todo{Quickly recap how maps for UBE2I and SUMO1 were made}
 
@@ -57,7 +57,7 @@ Intriguingly, many sites show fitness that is better than wildtype (e.g., positi
 \end{figure}
 
 
-As Figure~\ref{hyperactive}D shows, substrate specificity does not paint a complete picture of the mechanisms potentially underlying hyperactive complementation. A particularly interesting exception can be observed at residues A15 and T108. Both residues harbor hyperactive mutations but do not face towards the substrate. Instead, they form part of the interface with the E3 SUMO ligase RanBP2, and flank a small cavity on UBE2I's surface into which RanBP2 inserts a phenylalanine residue upon binding~\cite{gareau_determinants_2012}. Changing either A15 or T108 into aromatic residues results in a large fitness increase (Figure~\ref{fig:pi-stack}). This may be the result from the emergence of a $\pi$-stack interaction that strengthens E2-E3 binding.
+As Figure~\ref{fig:hyperactive}D shows, substrate specificity does not paint a complete picture of the mechanisms potentially underlying hyperactive complementation. A particularly interesting exception can be observed at residues A15 and T108. Both residues harbor hyperactive mutations but do not face towards the substrate. Instead, they form part of the interface with the E3 SUMO ligase RanBP2, and flank a small cavity on UBE2I's surface into which RanBP2 inserts a phenylalanine residue upon binding~\cite{gareau_determinants_2012}. Changing either A15 or T108 into aromatic residues results in a large fitness increase (Figure~\ref{fig:pi-stack}). This may be the result from the emergence of a $\pi$-stack interaction that strengthens E2-E3 binding.
 
 \begin{figure}[h!]
 	\centering
@@ -86,7 +86,7 @@ Hyperactive mutations as beneficial	& 60.6
 
 \subsubsection{Intragenic epistasis and compensatory mutations}
 
-Full-length UBE2I clones generated for DMS-BarSeq analysis often encoded more than one amino acid change. Multi-mutant clones offer the opportunity to search for intragenic genetic interactions. Genetic interaction is defined when a combination of mutations yields an unexpected phenotypic effect, so that identifying genetic interactions requires that we model the phenotype expected from a combination of mutations, given the single-mutant effects.  Here we used a previously-described multiplicative model 20,21 in which genetic interaction is measured as $\varepsilon_{ij} = f_i \cdot f_j - f_{ij}$, where $f_i$ and $f_j$ represent single mutant fitness and fij represents double mutant fitness scores. Most double mutants (71\%) did not show a significant deviation from $\varepsilon_{ij} = 0$ under this model, while 328 position pairs did show significant genetic interaction (Figure~\ref{fig:epsistasis}, see Methods). Of particular interest are compensatory interactions, i.e. cases where a double mutation is more fit than either of the component single mutations.  Where compensatory residues are proximal in the protein structure, the combination of two mutant residues may be able to re-establish a physical interaction that was lost in each of the single mutants. Although the majority of genetically interacting sites were not proximal in the structure (Figure~\ref{fig:epsistasis}B), there were interesting exceptions. For example, the I4T-P69S double mutant appears to exhibit compensatory behaviour: In the wild type structure, the van-der-Waals radii of the two residues are in direct contact (Figure~\ref{fig:epsistasis}C). Either mutation alone would be expected to destabilize the hydrophobic interaction between isoleucine and proline.  However, In the double mutant, hydroxyl groups on the two residues could adopt a hydrogen bond that re-establishes interaction and re-stabilizes the fold (Figure~\ref{fig:epsistasis}D).
+Full-length UBE2I clones generated for DMS-BarSeq analysis often encoded more than one amino acid change. Multi-mutant clones offer the opportunity to search for intragenic genetic interactions. Genetic interaction is defined when a combination of mutations yields an unexpected phenotypic effect, so that identifying genetic interactions requires that we model the phenotype expected from a combination of mutations, given the single-mutant effects.  Here we used a previously-described multiplicative model~\cite{phillips_language_1998,onge_systematic_2007} in which genetic interaction is measured as $\varepsilon_{ij} = f_i \cdot f_j - f_{ij}$, where $f_i$ and $f_j$ represent single mutant fitness and $f_{ij}$ represents double mutant fitness scores. Most double mutants (71\%) did not show a significant deviation from $\varepsilon_{ij} = 0$ under this model, while 328 position pairs did show significant genetic interaction (Figure~\ref{fig:epsistasis}, see Methods). Of particular interest are compensatory interactions, i.e. cases where a double mutation is more fit than either of the component single mutations.  Where compensatory residues are proximal in the protein structure, the combination of two mutant residues may be able to re-establish a physical interaction that was lost in each of the single mutants. Although the majority of genetically interacting sites were not proximal in the structure (Figure~\ref{fig:epsistasis}B), there were interesting exceptions. For example, the I4T-P69S double mutant appears to exhibit compensatory behaviour: In the wild type structure, the van-der-Waals radii of the two residues are in direct contact (Figure~\ref{fig:epsistasis}C). Either mutation alone would be expected to destabilize the hydrophobic interaction between isoleucine and proline.  However, In the double mutant, hydroxyl groups on the two residues could adopt a hydrogen bond that re-establishes interaction and re-stabilizes the fold (Figure~\ref{fig:epsistasis}D).
 
 \begin{figure}[h!]
 	\centering
@@ -225,7 +225,7 @@ Finally, we examined our functional map of Calmodulin and found that it was able
 
 To further put our map to the test in a clinical scenario we inquired with Invitae, a company offering gene panel sequencing services for Long QT syndrome, including CALM1/2/3. In a blind test, we requested a list of Calmodulin variants they observed in patients but were unable to classify. After calibrating our map with respect to the above ClinVar and GnomAD datasets, we classified these 10 new variants (Table~\ref{tab:invitae}). Two were classified as damaging, six as benign, and two were too close to the threshold to be called either. In the next phase, Invitae revealed the associated patient cardiovascular phenotypes. Five out of the six patients with benign predictions were revealed to be healthy, while both patients with damaging predictions did show a positive phenotype. The two uncertain cases were revealed to be affected as well. A Mann-Whitney-U test showed these results to be statistically significant (P = 0.008).
 
-\begin{table}
+\begin{table}[h!]
 	\centering
 	\caption{Re-classification attempt for variants of uncertain significance found in Invitae gene panel sequencing. MAF: Minor allele frequency in GnomAD, if known; sd/rmsd: standard error or RMSD of observation in map. imp/reg: imputed or degree of regularization; DMS score pre-regularization; DMS score post-regularization; DMS call: Classification according to DMS score; Indication: Type of sequencing panel ordered.\newline}
 	%using a pdf file with individually colored cells
@@ -256,6 +256,23 @@ To further put our map to the test in a clinical scenario we inquired with Invit
 
 \section{Discussion}
 
+In total, this study has produced five maps with functional impacts for 15998 possible missense variants. The functional maps generated for sumoylation pathway members UBE2I and SUMO1 and disease-implicated genes NCS1, CALM1/2/3 and TPK1 using our framework were consistent with biochemical expectations while providing new hypotheses. DMS maps based on functional complementation were highly predictive of disease causing mutations, outperforming computational prediction methods such as PolyPhen-2 or PROVEAN5.  The imputation method we employed allows us to generate complete functional maps while maintaining the reliability on par with the experimental results. 
+
+Given the prospect of personalized and precision medicine, genome sequencing is expected to become increasingly common in everyday medical practice. Current estimates suggest that every human carries an average of 200-300 rare mutations that have never before been seen in the clinic. This creates a need for fast, reliable interpretation of variant effects. Instead of generating clones and functionally testing variants of unknown significance after they are first observed, DMS technology offers to generate exhaustive maps of functional variation that enable interpretation immediately upon clinical presentation, even for rare and personal variation.
+
+A key requirement for DMS mapping is an en masse functional assay that can be applied at the scale of 104-105 variant clones.  Among $\sim 4000$ disease genes, examination of four systematic screens and curated literature suggests that $\sim 5\%$ of human disease genes have a yeast complementation assay~\cite{5,33,34}. Complementation assays can also be carried out in human cells \todo{REF}, and \textit{en masse} transfection is achievable at the required scale \todo{REF}. Based on only three large-scale CRISPR studies~\cite{35-37}, cellular growth phenotypes have already been observed in at least one cell line for 29\% of human disease genes.  Beyond complementation, sub-functional assays, e.g. of protein interaction, can not only reveal variation that impacts the specifically assayed sub-function but also folding/stability mutations that ablate overall function. In a recent study, approximately two thirds of disease-causing variants were found to impact at least one protein interaction~\cite{38}. Although only a minority of human protein interactions have been mapped~\cite{39}, already 40\% of human genes have at least one interaction partner detectable by yeast two-hybrid assay in a recent screen~\cite{39}. Taking the union of available assays, we estimate that 57\% of known disease-associated genes already have an assay potentially amenable to DMS. Emerging protein interaction data and CRISPR screens suggests that the proportion of DMS-accessible disease genes will continue to rise. 
+
 \section{Methods}
 
+\subsection{DMS-TileSeq}
 
+\subsection{UBE2I interface analysis}
+
+\subsection{Complementation spotting assays}
+
+\subsection{Hyperactive mutation analysis}
+%Alignment extraction yeast, amoeba, fly
+%Blind scoring of sumoylation assays
+%phydms
+
+\subsection{Intragenic epistasis analysis}
