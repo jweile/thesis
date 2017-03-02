@@ -232,10 +232,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="424.10375"
+     inkscape:cx="406.42608"
      inkscape:cy="406.8146"
      inkscape:document-units="cm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g71879"
      showgrid="false"
      units="cm"
      inkscape:window-width="1855"
@@ -1788,12 +1788,14 @@
         <text
            id="text4829"
            style="font-variant:normal;font-weight:normal;font-size:12px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-           transform="matrix(1,0,0,-1,178.73,47.52)">
+           transform="scale(1,-1)"
+           x="186.73003"
+           y="-47.52">
           <tspan
              id="tspan4831"
              sodipodi:role="line"
-             y="0"
-             x="0 3.9960001 12 14.664 17.327999 27.323999 33.995998 37.332001 47.327999 54 56.664001 63.335999">(Slime Mold)</tspan>
+             y="-47.52"
+             x="186.73003">(Amoeba)</tspan>
         </text>
         <text
            id="text4833"

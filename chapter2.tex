@@ -52,7 +52,7 @@ Intriguingly, many sites show fitness that is better than wildtype (e.g., positi
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\textwidth]{img/hyperactive.pdf}
-	\caption{Hyperactive complementation in UBE2I. A) Variants scoring higher than the wildtype controls show stronger growth in manual complementation spotting assays and resemble the WT yeast. B) Distribution of scores for changes to residues naturally occurring in yeast, amoeba and fly are not significantly different from each other. C) Maximum mutant score mapped to amino acid positions on UBE2I structure. Hyperactive mutations are clustered at the substrate recognition site. D) \textit{In vitro} sumoylation assays performed by Bernier-Villamor~\etal~\cite{bernier-villamor_structural_2002} in comparison to complementation fitness scores.}
+	\caption{Hyperactive complementation in UBE2I. A) Variants scoring higher than the wildtype controls show stronger growth in manual complementation spotting assays and resemble the WT yeast. B) Distribution of scores for changes to residues naturally occurring in yeast, amoeba and fly are not significantly different from each other. C) Maximum mutant score mapped to amino acid positions on UBE2I structure. Hyperactive mutations are clustered at the substrate recognition site. Structure data from \texttt{PDB:3UIP}~\cite{gareau_determinants_2012} D) \textit{In vitro} sumoylation assay data from Bernier-Villamor~\etal~\cite{bernier-villamor_structural_2002} in comparison to the complementation fitness scores.}
 	\label{fig:hyperactive}
 \end{figure}
 
@@ -62,7 +62,7 @@ As Figure~\ref{fig:hyperactive}D shows, substrate specificity does not paint a c
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\textwidth]{img/pi-stack.pdf}
-	\caption{Potential de-novo pi-stack interaction between UBE2I and the E3 RanBP2}
+	\caption{Potential de-novo pi-stack interaction between UBE2I and the E3 RanBP2. Structure data from \texttt{PDB:3UIP}~\cite{gareau_determinants_2012}}
 	\label{fig:pi-stack}
 \end{figure}
 
@@ -164,15 +164,15 @@ Thiamine pyrophosphokinase (TPK1) is a protein that forms a dimer to perform its
 	\centering
 	\includegraphics[width=9in]{img/tpk1-map.pdf}
 	\caption{Functional map of Thiamine pyrophosphokinase 1 (TPK1). From top to bottom: Position-wise evolutionary conservation (AMAS); Secondary structure; Relative solvent accessibililty; Relative burial in homodimerization interface; Contacts with Thiamine diphosphate; Summary track showing the shares of amino acid changes resulting in varying degrees of fitness effects; Detailed heatmap showing individual amino acid change effects.}
-	\label{fig:tpk1_structure}
+	\label{fig:tpk1-map}
 \end{figure}
 \end{landscape}
 
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=.8\textwidth]{img/tpk1_structure.pdf}
-	\caption{Thiamine pyrophosphokinase 1 colored by median complementation score. A) TPK1 homodimer structure showing one monomer as surface model, the other monomer as cartoon model. B) Hydrophobic residues facing the inside of the C-terminal $\beta$-sandwich domain are sensitive to mutation. C) Active site residues in contact with the substrate are sensitive to mutation.}
-	\label{fig:tpk1-map}
+	\caption{Thiamine pyrophosphokinase 1 colored by median complementation score. A) TPK1 homodimer structure showing one monomer as surface model, the other monomer as cartoon model. B) Hydrophobic residues facing the inside of the C-terminal $\beta$-sandwich domain are sensitive to mutation. C) Active site residues in contact with the substrate are sensitive to mutation. Structure data from \texttt{PDB:3S4Y}~\cite{timm_crystal_2001}}
+	\label{fig:tpk1_structure}
 \end{figure}
 
 
@@ -265,15 +265,43 @@ A key requirement for DMS mapping is an en masse functional assay that can be ap
 \section{Methods}
 
 \subsection{DMS-TileSeq}
-DMS-TileSeq was performed for \gene{SUMO1}, \gene{TPK1}, \gene{NCS1}, and \gene{CALM1} as described in chapter~\cite{ch:data1}.
+The DMS-TileSeq experiment for \gene{SUMO1}, \gene{TPK1}, \gene{NCS1}, and \gene{CALM1} was performed by Song Sun and Marta Verby as described in chapter~\cite{ch:data1}. The downstream sequencing data analysis, imputation and regularization was performed as described in chapter~\cite{ch:data1}.
 
 \subsection{UBE2I interface analysis}
+Co-crystal structure data for UBE2I was obtained from the PDB (Entries: \texttt{3UIP}~\cite{gareau_determinants_2012}; \texttt{4W5V}~\cite{reiter_characterization_2016}; \texttt{3KYD}~\cite{olsen_active_2010}; \texttt{2UYZ}~\cite{knipscheer_noncovalent_2007}; \texttt{4Y1L}~\cite{alontaga_rwd_2015}). A custom script was developed to obtain solvent accessibility using \texttt{GETAREA}~\cite{fraczkiewicz_exact_1998} for monomers and complexes, allowing for the calculation of relative burial of interfacial residues. Complementation fitness distributions for each interaction's interfacial residues were tallied and tested for statistically significant differences using Wilcoxon tests. Distributions were plotted using the R package `beeswarm'~\cite{eklund_bee_2016}
 
-\subsection{Complementation spotting assays}
+\subsection{Structure coloration} A custom script was developed to calculate median and maximum complementation fitness values for each residue and autogenerate coloration commands for OpenPyMol~\cite{schrodinger_pymol_2016}. 
+
+\subsection{Complementation spotting assays} Complementation spotting assays were performed by Jennifer Knapp as described in chapter~\cite{ch:data1}. Image data was processed using PlateOrganizer and integrated and compared to the high-throughput results using custom scripts.
 
 \subsection{Hyperactive mutation analysis}
-%Alignment extraction yeast, amoeba, fly
-%Blind scoring of sumoylation assays
-%phydms
+\paragraph{Native amino acid analysis:} The UBE2I amino acid sequence was aligned to that of its orthologues in \species{S.~cerevisiae}, \species{D.~discoideum} and \species{D.~melanogaster} using \texttt{CLUSTAL}~\cite{russell_clustal_2014}. A custom script was used to extract inter-species amino acid changes and lookup the corresponding complementation fitness values in the UBE2I map. Distributions were plotted using the R package \texttt{beeswarm}~\cite{eklund_bee_2016}.
 
-\subsection{Intragenic epistasis analysis}
+\paragraph{\textit{In vitro} sumoylation comparison} Images from \textit{in vitro} sumoylation assays performed for UBE2I variants by Bernier-Villamor~\etal~\cite{bernier-villamor_structural_2002} were scored by visual inspection while blinded to the underlying variant information. Scores were then represented as a heatmap and compared complementation scores from the UBE2I map.
+
+\paragraph{Phylogenetic comparison of different models for hyperactive mutations}
+The \texttt{phydms} software package~\cite{bloom_identification_2017} was used by Jesse Bloom to test three different models relating the effect of activity-enhancing mutations in SUMO1 and UBE2I to the actual evolutionary preference for that amino acid in a real biological context. Specifically, using the substitution models described in \cite{bloom_identification_2017}, three different ways of relating the evolutionary preference $\pi_{r,a}$ for amino-acid a at site $r$ to the fitness score $f_{r,a}$ for a given mutation were tested. 
+
+In the first model, $$\pi_{r,a} = f_{r,a}.$$ 
+
+In the second model, $$\pi_{r,a} = \min(f_{r,a}, f_{r,\text{wt}}),$$ where $f_{r,\text{wt}}$ is the fitness score for the wildtype amino-acid at site $r$. 
+
+Finally, in the third model, $$\pi_{r,a} = \begin{cases} f_{r,a} &  \text{if}~ f_{r,a} \le f_{r,\text{wt}} \\ \frac{1}{f_{r,a}} & \text{otherwise} \end{cases}. $$ 
+
+Each of these models were fit to the set of Ensemble homologues with at least 75\% sequence identity to the human protein. 
+
+\subsection{Intragenic epistasis analysis} Genetic interactions were determined based on a previously described multiplicative model~\cite{phillips_language_1998,onge_systematic_2007}, that expects double mutant fitness to conform to the product of single mutant fitness effects in the absence of interaction between the two. Under this model, the strength of genetic interaction is defined as $$\varepsilon_{ij} = f_i \cdot f_j - f_{ij},$$ where $f_i$ and $f_j$ represent single mutant fitness and $f_{ij}$ represents double mutant fitness scores. To test for deviation from this model, all cases where double mutant and both corresponding single mutants were known in the data were extracted. The standard deviation for the expected double mutant fitness $f_i \cdot f_j$ was estimated using
+$$ \mathbb{V}(XY) = \mathbb{E}(X^2Y^2)-(\mathbb{E}(XY))^2=\mathbb{V}(X)\mathbb{V}(Y) + \mathbb{V}(X)(\mathbb{E}(Y))^2+\mathbb{V}(Y)(\mathbb{E}(X))^2 $$ 
+%$$ \bar{\sigma}_{i,j} = \sqrt{\sigma_i^2 \cdot \sigma_j^2 + \sigma_i^2 \cdot \mu_j^2 + \sigma_j^2 \cdot \mu_i^2},$$ 
+%where $\sigma_i , \sigma_j$ are the standard deviations and $\mu_i , \mu_j$ are the means of the single mutant fitness measurements.
+Using these estimates Student t-tests were performed between the measured and expected double mutant fitnesses and corrected for multiple hypothesis testing using the  Benjamini-Hochberg~\cite{benjamini_controlling_1995} method at a 5\% FDR threshold.
+
+To detect potential direct compensatory relationships, the genetic interactions were compared with physical distance in the protein's 3D structure. The euclidean distance between the C$_\alpha$ atoms in of each pair of residues was calculated using a custom script using structural data from \texttt{PDB:3UIP}~\cite{gareau_determinants_2012}.
+
+
+
+\subsection{Structural analysis of disease gene maps}
+Co-crystal and NMR structure data for SUMO1, TPK1, NCS1 and CALM1 was obtained from the PDB (Entries: \todo{Check Desktop HD for SUMO files that were used}). Structures were colorized using the same method described above for UBE2I.
+
+\subsection{Disease variant analysis}
+Missense variant tables for \gene{UBE2I}, \gene{SUMO1}, \gene{TPK1}, \gene{NCS1}, \gene{CALM1}, \gene{CALM2} and \gene{CALM3} were integrated ClinVar, COSMIC, and GnomAD and compared with complementation scores. To calculate diploid scores for TPK1, phased variant call files (VCF) for the TPK1 gene obtained from the 1000 genomes project database to identify homozygous, heterozygous and compound heterozygous cases for all present variants using a custom script. For each case, the diploid score was calculated as $s_\text{diploid} = \max(s_1,s_2)$, where $s_1$ and $s_2$ are the variant scores for the paternal and maternal allele.
