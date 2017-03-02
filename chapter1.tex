@@ -280,7 +280,7 @@ A third set of features is derived from the structural context of each amino aci
 Additional features used are the PROVEAN~\cite{choi_predicting_2012} and BLOSUM~\cite{henikoff_amino_1992} scores for a given amino acid change and the evolutionary conservation of the amino acid position. Conservation was obtained by generating a multiple alignment of direct functional orthologues across many eukaryotic species using CLUSTAL~\cite{russell_clustal_2014}, which was used as input for AMAS~\cite{livingstone_protein_1993}.
 
 The machine-learning predictions resulting generated above were also used to regularize experimental measurements of lower confidence. To this end the corrected standard error associated with each data point can be used to determine the weight of assigned to the measurement, as follows:
-$$s_\text{joint} = \frac{1}{\frac{1}{\sigma_{\bar x}^{(0)}}+\frac{1}{\sigma_{\bar x}^{(1)}}}(\frac{1}{\sigma_{\bar x}^{(0)}} s'_0 + \frac{1}{\sigma_{\bar x}^{(1)}}s'_1),$$
+$$s'_\text{joint} = \frac{1}{\frac{1}{\sigma_{\bar x}^{(0)}}+\frac{1}{\sigma_{\bar x}^{(1)}}} \left (\frac{1}{\sigma_{\bar x}^{(0)}} s'_0 + \frac{1}{\sigma_{\bar x}^{(1)}}s'_1 \right ),$$
 where $s'_0$ is machine learning prediction, $\sigma_{\bar x}^{(0)}$ is the prediction standard error approximated by RMSD, $s'_1$ is the experimental fitness measurement, and $\sigma_{\bar x}^{(1)}$ is the assocated adjusted standard error.
 
 The joining, imputation and regularization procedures are implemented as part of a larger DMS analysis package provided on the attached storage media. It is also available online\footnote{http://dalai.mshri.on.ca/$\sim$jweile/projects/popcodePipeline/doc}.

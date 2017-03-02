@@ -265,14 +265,14 @@ A key requirement for DMS mapping is an en masse functional assay that can be ap
 \section{Methods}
 
 \subsection{DMS-TileSeq}
-The DMS-TileSeq experiment for \gene{SUMO1}, \gene{TPK1}, \gene{NCS1}, and \gene{CALM1} was performed by Song Sun and Marta Verby as described in chapter~\cite{ch:data1}. The downstream sequencing data analysis, imputation and regularization was performed as described in chapter~\cite{ch:data1}.
+The DMS-TileSeq experiment for \gene{SUMO1}, \gene{TPK1}, \gene{NCS1}, and \gene{CALM1} was performed by Song Sun and Marta Verby as described in chapter~\cite{ch:data1}. The downstream sequencing data analysis, imputation and regularization was performed as described in chapter~\ref{ch:data1}.
 
 \subsection{UBE2I interface analysis}
 Co-crystal structure data for UBE2I was obtained from the PDB (Entries: \texttt{3UIP}~\cite{gareau_determinants_2012}; \texttt{4W5V}~\cite{reiter_characterization_2016}; \texttt{3KYD}~\cite{olsen_active_2010}; \texttt{2UYZ}~\cite{knipscheer_noncovalent_2007}; \texttt{4Y1L}~\cite{alontaga_rwd_2015}). A custom script was developed to obtain solvent accessibility using \texttt{GETAREA}~\cite{fraczkiewicz_exact_1998} for monomers and complexes, allowing for the calculation of relative burial of interfacial residues. Complementation fitness distributions for each interaction's interfacial residues were tallied and tested for statistically significant differences using Wilcoxon tests. Distributions were plotted using the R package `beeswarm'~\cite{eklund_bee_2016}
 
 \subsection{Structure coloration} A custom script was developed to calculate median and maximum complementation fitness values for each residue and autogenerate coloration commands for OpenPyMol~\cite{schrodinger_pymol_2016}. 
 
-\subsection{Complementation spotting assays} Complementation spotting assays were performed by Jennifer Knapp as described in chapter~\cite{ch:data1}. Image data was processed using PlateOrganizer and integrated and compared to the high-throughput results using custom scripts.
+\subsection{Complementation spotting assays} Complementation spotting assays were performed by Jennifer Knapp as described in chapter~\ref{ch:data1}. Image data was processed using PlateOrganizer and integrated and compared to the high-throughput results using custom scripts.
 
 \subsection{Hyperactive mutation analysis}
 \paragraph{Native amino acid analysis:} The UBE2I amino acid sequence was aligned to that of its orthologues in \species{S.~cerevisiae}, \species{D.~discoideum} and \species{D.~melanogaster} using \texttt{CLUSTAL}~\cite{russell_clustal_2014}. A custom script was used to extract inter-species amino acid changes and lookup the corresponding complementation fitness values in the UBE2I map. Distributions were plotted using the R package \texttt{beeswarm}~\cite{eklund_bee_2016}.
@@ -294,7 +294,7 @@ Each of these models were fit to the set of Ensemble homologues with at least 75
 $$ \mathbb{V}(XY) = \mathbb{E}(X^2Y^2)-(\mathbb{E}(XY))^2=\mathbb{V}(X)\mathbb{V}(Y) + \mathbb{V}(X)(\mathbb{E}(Y))^2+\mathbb{V}(Y)(\mathbb{E}(X))^2 $$ 
 %$$ \bar{\sigma}_{i,j} = \sqrt{\sigma_i^2 \cdot \sigma_j^2 + \sigma_i^2 \cdot \mu_j^2 + \sigma_j^2 \cdot \mu_i^2},$$ 
 %where $\sigma_i , \sigma_j$ are the standard deviations and $\mu_i , \mu_j$ are the means of the single mutant fitness measurements.
-Using these estimates Student t-tests were performed between the measured and expected double mutant fitnesses and corrected for multiple hypothesis testing using the  Benjamini-Hochberg~\cite{benjamini_controlling_1995} method at a 5\% FDR threshold.
+Using these estimates, Student t-tests were performed between the measured and expected double mutant fitnesses and corrected for multiple hypothesis testing using the  Benjamini-Hochberg~\cite{benjamini_controlling_1995} method at a 5\% FDR threshold.
 
 To detect potential direct compensatory relationships, the genetic interactions were compared with physical distance in the protein's 3D structure. The euclidean distance between the C$_\alpha$ atoms in of each pair of residues was calculated using a custom script using structural data from \texttt{PDB:3UIP}~\cite{gareau_determinants_2012}.
 
