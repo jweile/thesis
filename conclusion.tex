@@ -1,7 +1,42 @@
 
 \chapter{Conclusion}
 
-\section{Discussion}
+\section{Summary}
+
+Here we have presented a complete framework for the construction of comprehensive, high-fidelity functional maps. We have demonstrated two versions of this framework: DMS-BarSeq, a barcode-based approach that allows for high-confidence measurement of individual clones including double- and higher-order multi-mutants; and DMS-TileSeq, a fast and efficient framework that generalizes fitness effects over many different clones sharing variants of interest. Both versions use a new mutagenesis protocol, POPCode, which thanks to its accompanying webtool makes it easer than before to generate variant libraries covering the complete space of amino acid changes. At its core, the framework relies on a functional complementation assay in yeast, which can measure the overall effect of variants on protein function and has been shown to be highly predictive of variant pathogenicity in humans, outperforming common \textit{in silico} methods, despite the $\sim$ 1 billion year divergence between the two organisms. 
+The DMS analysis software developed here introduces novel advances to deep mutational scanning: (i) The degree of confidence behind each measurement is carefully assessed and recorded in order to help variant classification; and (ii) variants that were missing in the complementation library or measured with low confidence were supplemented using a RandomForest-based machine learning method, whose predictions were found to be surprisingly reliable. 
+
+We have evaluated the technical features of the framework on the two sumoylation pathway members UBE2I and SUMO1. We found that the functional maps generated with our method were able to successfully recapitulate known features of the proteins' biology and biochemistry and even hint at novel features that warrant further investigation. We found a large number genetic interactions between variants in UBE2I, some of which may be due to direct compensatory relationships of amino acid replacements. Most interactions however were found to involve residue pairs separated by larger physical distances.
+
+Having validated the framework, we demonstrated its power to detect pathogenic variants in the disease genes \gene{TPK1}, \gene{NCS1}, \gene{CALM1}, \gene{CALM2} and \gene{CALM3}.  
+We found that our Calmodulin map excelled at distinguishing disease-associated variants from benign polymorphisms and greatly outperformed the common prediction algorithms PolyPhen-2 and PROVEAN. We subsequently applied our functional map for \gene{CALM1}, \gene{CALM2} and \gene{CALM3} to classify VUS observed in patients during gene panel sequencing and found our predictions to be closely matching patient indications.
+
+
+\subsection{Using DMS data in a clinical context}
+%DMS in clinical contexts
+% -> limitations (NCS1 )
+\subsubsection{Limitations of the DMS framework}
+%limited number of genes with compl assay
+Despite these successes, there are a number of limitations the current form of our DMS framework. Currently, the number of genes amenable to functional complementation in yeast is very limited. Song Sun and other members of the Roth lab have previously determined that only 60 human disease genes can currently been examined using this assay~\cite{sun_extended_2016}. In addition, we found that some of these genes suffer from mapping quality issues. We observed this issue in the \gene{NCS1} map, which was of lower quality compared to those of other genes due to its wildtype complementation fitness being relatively weak. However it is possible that these assays might be improved by using different yeast strains with different backgrounds or by using different growth conditions.
+% -> cost
+% -> scalability
+% -> Quality control
+% -> Accessibility / Database 
 
 \section{Outlook}
+
+\subsection{DMS in human cell lines}
+%previous work: PPARG
+%atina's CRISPR lines
+%fowler's stability assay
+
+\subsection{Screening of other functional elements}
+%spliceDMS
+
+%extrapolation
+%  -> FUNSUM
+\subsection{Functional classification of amino acid positions}
+%clustering of AA positions
+% -> functional classes
+
 
