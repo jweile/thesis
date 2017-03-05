@@ -45,13 +45,21 @@ Hanane Ennajdaoui in the Roth Lab is currently working on adapting our DMS frame
 \subsection{Other uses of DMS functional map data}
 
 \subsubsection{Screening for viral suppressors}
-%UBE2I as viral target
+Deep Mutational Scanning has many other potential uses beyond disease variant classification. As we have demonstrated in chapter 3 for UBE2I, the method helps sheds light on the biophysical mechanisms underlying the function of a gene. We have also shown that using a combination of Y2H and complementation, DMS can point to potential new protein interaction interfaces. 
+
+UBE2I is known to be directly targeted by many viruses, such as HIV, and EBV,  through specific protein-protein interactions to subvert host defenses~\cite{varadaraj_sumo_2014}. Using Y2H as the selection assay in our DMS framework and using our exising functional map of UBE2I as a reference, it would be possible to scan for variants that specifically disrupt interactions with viral proteins while not affecting overall UBE2I function. At the same time, this approach could help finding the specific interface for the interactions in question and could inform future drug development.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{img/clustering.pdf}
+	\caption{Hierarchical clustering of amino acid positions in UBE2I and SUMO1.}
+	\label{fig:clustering}
+\end{figure}
 
 \subsubsection{Advances in computational prediction of disease variants}
-%extrapolation
+As the number of functional maps produced via DMS grows, so does the its value as training data for \textit{in silico} prediction methods. While currently the number of genes scanned is not yet representative enough to cover the functional diversity of the proteome. However, Yingzhou Wu in the Roth Lab has already begun to explore its potential value for extrapolation. In an initial experiment, he was able to show that a machine learing method trained on the functional data obtainer for UBE2I was able to make better predictions towards the the effects mutations in SUMO1 than if trained on the data set underlying PolyPhen-2 (HumDiv). Thus, with each new functional map added to our variant atlas, computational predicion method have the potential to become more powerful.
 %  -> FUNSUM
 
 \subsubsection{Functional classification of amino acid positions}
-
-%clustering of AA positions
+The same wealth of functional data that may serve as training data for future computational prediction methods may also help us learn more about the set of roles played by different residues within proteins. In an initial experiment I have generated a hierarchical cluster map across postions in UBE2I and SUMO1 (Figure~\ref{fig:clustering}). The clustering hints at distinct functional classes occupied by different positions. There are three broad groups: (1) Positions that are generally unrestricted and can be occupied by almost any amino acid; (2) Positions that are generally constrained to a certain small number of amino acids and; (3) Positions that show result in hyperactivity for many possible amino acids. Within these groups there are a number of subclusters visible. For example, within group two, certain positons only tolerate alphatic residues, while others only tolerate aromatic residues. Evolution only samples a subset of the possible amino acids at a given position. By growing the set of proteins with complete functional maps we can potentially collect a catalog of possible functional `archetypes' for positions within proteins. Using multiple alignments we can then make predictions as to the archetype of any given position.
 % -> functional classes
