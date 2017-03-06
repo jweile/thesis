@@ -91,7 +91,7 @@ Full-length UBE2I clones generated for DMS-BarSeq analysis often encoded more th
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\textwidth]{img/epistasis.pdf}
-	\caption{Epistasis}
+	\caption{Intragenic epistasis in UBE2I. A) Volcano plot of epsilon values (deviation from expectation) vs FDR-corrected significance levels. Above: Histogram of epsilon values. B) Comparison of epsilon values with inter-alpha-carbon distance in the 3D structure. C) Positive genetic interaction between I4T and P69S. The double mutant fitness (DM) significantly exceeds that of both single mutants and their product. D) Wiltype structural context for I4 and P69. E) Simulated double mutant structural context.}
 	\label{fig:epsistasis}
 \end{figure}
 
@@ -102,7 +102,12 @@ An important factor behind the choice of UBE2I as a testing ground for our DMS f
 
 We explored the set of previously identified Y2H interactions of UBE2I and found its interaction with the Special AT-rich sequence Binding protein SATB1, a sumoylation target, to be the strongest interaction signal. We used DMS-BarSeq to map the effects of UBE2I variants on the interaction and compared the results to those of the complementation assay. Although too few variants in the Y2H screen were measured with high enough confidence to perform reliable imputation, we were able to identify a \todo{find number} variants that specifically disrupted the UBE2I-SATB1 binding without affecting its overall function as measured by the complementation assay. Figure~\ref{fig:y2hVScompl}A highlights these residues on the surface of UBE2I, which may determine the specificity of the UBE2I-SATB1 interaction. Consistent with SATB1's known role as a sumoylation target, the residues are clustered near the known substrate recognition and binding surface. Intriguingly, we also found a number of residues within UBE2I's hydrophobic core, that upon mutation to alternative hydrophobic residues resulted in a disruption of UBE2I-SATB1 binding (Figure~\ref{fig:y2hVScompl}B). The fact that these residues are physically close to the locations of surface residues with similar behaviour may indicate that mutations at these positions could result in subtle shifts of UBE2I's fold that disrupt the SATB1 binding interface without affecting other functions.
 
-%%%%%%%%%%%Figure for Y2H vs Compl. %%%%%%%%%%
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{img/satb1_interface.pdf}
+	\caption{Potential interafacial residues for UBE2I's interaction with SATB1. Highlighted residues disrupt Y2H interaction without disrupting overall function as measured by complementation.}
+	\label{fig:y2hVScompl}
+\end{figure}
 
 
 \subsection{A functional map for SUMO1}
@@ -308,12 +313,32 @@ $$ \mathbb{V}(XY) = \mathbb{E}(X^2Y^2)-(\mathbb{E}(XY))^2=\mathbb{V}(X)\mathbb{V
 %where $\sigma_i , \sigma_j$ are the standard deviations and $\mu_i , \mu_j$ are the means of the single mutant fitness measurements.
 Using these estimates, Student t-tests were performed between the measured and expected double mutant fitnesses and corrected for multiple hypothesis testing using the  Benjamini-Hochberg~\cite{benjamini_controlling_1995} method at a 5\% FDR threshold.
 
-To detect potential direct compensatory relationships, the genetic interactions were compared with physical distance in the protein's 3D structure. The euclidean distance between the C$_\alpha$ atoms in of each pair of residues was calculated using a custom script using structural data from \texttt{PDB:3UIP}~\cite{gareau_determinants_2012}.
+To detect potential direct compensatory relationships, the genetic interactions were compared with physical distance in the protein's 3D structure. The euclidean distance between the C$_\alpha$ atoms in of each pair of residues was calculated using a custom script using structural data from the PDB (\texttt{3UIP}~\cite{gareau_determinants_2012}).
 
 
 
 \subsection{Structural analysis of disease gene maps}
-Co-crystal and NMR structure data for SUMO1, TPK1, NCS1 and CALM1 was obtained from the PDB (Entries: \todo{Check Desktop HD for SUMO files that were used}). Structures were colorized using the same method described above for UBE2I.
+Co-crystal and NMR structure data for SUMO1, TPK1, NCS1 and CALM1 was obtained from the PDB (Entries: \texttt{2G4D}~\cite{xu_crystal_2006}; \texttt{2IO2}~\cite{Reverter http://dx.doi.org/10.1038/nsmb1168}; \texttt{3KYD}~\cite{olsen_active_2010}; \texttt{3UIP}~\cite{gareau_determinants_2012}; \texttt{2ASQ}~\cite{Song http://dx.doi.org/10.1074/jbc.M507059200}; \texttt{4WJO}~\cite{Cappadocia http://dx.doi.org/10.1016/j.str.2014.10.015}; \texttt{4WJQ}~\cite{same as previous}; \texttt{1WYW}~\cite{Baba et al http://dx.doi.org/10.1038/nature03634}; 
+\texttt{2L2E}~\cite{Ames etal unpublished}; \texttt{4GUK}~\cite{Chengpeng etal unpublished}; \texttt{5AFP}~\cite{Pandalaneni etal http://dx.doi.org/10.1074/jbc.M114.627059}; 
+\texttt{3G43}~\cite{Fallon etal http://www.pnas.org/content/106/13/5135}; \texttt{4DJC}~\cite{sarhan_crystallographic_2012}; 
+\texttt{3S4Y}~\cite{timm_crystal_2001}; ). Structures were colorized using the same method described above for UBE2I and analyzed using OpenPyMol~\cite{schrodinger_pymol_2016}.
+
+%NCS1: 2L2E myristoylated NCS1 (pombe) Ames et al unpublished
+%  -> 4GUK (plain) Chengpeng, F., Elias, L. unpublished
+%  -> 5AFP (rhodopsin kinase) (rat) Pandalaneni et al http://dx.doi.org/10.1074/jbc.M114.627059
+%Calmodulin: 3G43 (ca channel fragm.) Fallon et al. http://www.pnas.org/content/106/13/5135
+%  -> 4DJC (na channel fragm.) sarhan et al http://dx.doi.org/10.1073/pnas.1114748109
+%TPK1: 3S4Y timm_crystal_2001
+%SUMO1:
+% -> 2G4D (SENP1) Xu et al, http://dx.doi.org/10.1042/BJ20060526
+% -> 2IO2(SENP2) Reverter et al, http://dx.doi.org/10.1038/nsmb1168
+% -> 3KYD (E1) olsen_active_2010
+% -> 3uip
+% -> 2ASQ (PIAS2) Song et al http://dx.doi.org/10.1074/jbc.M507059200
+% -> 4WJO (PML) Cappadocia http://dx.doi.org/10.1016/j.str.2014.10.015
+% -> 4WJQ (DAXX) Cappadocia (same as PML)
+% -> 1WYW (TDG) Baba et al http://dx.doi.org/10.1038/nature03634
+
 
 \subsection{Disease variant analysis}
 Missense variant tables for \gene{UBE2I}, \gene{SUMO1}, \gene{TPK1}, \gene{NCS1}, \gene{CALM1}, \gene{CALM2} and \gene{CALM3} were integrated ClinVar, COSMIC, and GnomAD and compared with complementation scores. To calculate diploid scores for TPK1, phased variant call files (VCF) for the TPK1 gene obtained from the 1000 genomes project database to identify homozygous, heterozygous and compound heterozygous cases for all present variants using a custom script. For each case, the diploid score was calculated as $s_\text{diploid} = \max(s_1,s_2)$, where $s_1$ and $s_2$ are the variant scores for the paternal and maternal allele.
