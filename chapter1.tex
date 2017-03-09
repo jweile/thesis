@@ -284,7 +284,7 @@ The results from the barcoded and regional sequencing screens do not scale linea
 \begin{align*}
 w_0 &= \frac{1}{1+\frac{\sigma_{\bar x}^{(0)}}{\sigma_{\bar x}^{(1)}}}; ~ w_1 = \frac{1}{1+\frac{\sigma_{\bar x}^{(1)}}{\sigma_{\bar x}^{(0)}}}\\
 \mu_\text{joint} &= w_0 \cdot \mu_0 + w_1 \cdot \mu_1\\
-\sigma_\text{joint} &= w_0 \cdot (\sigma_0^2 + \mu_0^2) + w_1 \cdot (\sigma_1^2 + \mu_1^2) - \mu_\text{joint}^2\\
+\sigma_\text{joint}^2 &= w_0 \cdot (\sigma_0^2 + \mu_0^2) + w_1 \cdot (\sigma_1^2 + \mu_1^2) - \mu_\text{joint}^2\\
 \sigma_{\bar x}^{(\text{joint})} &= \frac{\sigma_\text{joint}}{\sqrt{df_0 + df_1}}
 \end{align*}
 where $\mu_0$ is the DMS-BarSeq value, $\sigma_0$ the associated standard deviation, $\sigma_{\bar x}^{(0)}$ the associated standard error, $df_0$ the associated degrees of freedom, $\mu_1$ is the DMS-TileSeq value, $\sigma_1$ the associated standard deviation, $\sigma_{\bar x}^{(1)}$ the associated standard error, and $df_1$ the associated degrees of freedom.
@@ -299,7 +299,7 @@ The machine learning predictions resulting generated above were also used to reg
 \begin{align*}
 w_0 &= \frac{1}{1+\frac{\sigma_{\bar x}^{(0)}}{\sigma_{\bar x}^{(1)}}}; ~ w_1 = \frac{1}{1+\frac{\sigma_{\bar x}^{(1)}}{\sigma_{\bar x}^{(0)}}}\\
 \mu_\text{joint} &= w_0 \cdot \mu_0 + w_1 \cdot \mu_1\\
-\sigma_\text{joint} &= w_0 \cdot (\sigma_0^2 + \mu_0^2) + w_1 \cdot (\sigma_1^2 + \mu_1^2) - \mu_\text{joint}^2\\
+\sigma_\text{joint}^2 &= w_0 \cdot (\sigma_0^2 + \mu_0^2) + w_1 \cdot (\sigma_1^2 + \mu_1^2) - \mu_\text{joint}^2\\
 \sigma_{\bar x}^{(\text{joint})} &= \frac{\sigma_\text{joint}}{\sqrt{df_0 + df_1}}
 \end{align*}
 where $\mu_0$ is the measured value, $\sigma_0$ the associated standard deviation, $\sigma_{\bar x}^{(0)}$ the associated standard error, $df_0$ the associated degrees of freedom, $\mu_1$ is the RandomForest predicted value, $\sigma_1$ the associated standard deviation as approximated by cross-validation RMSD, $\sigma_{\bar x}^{(1)}$ the associated standard error, and $df_1$ the associated virtual degrees of freedom.
