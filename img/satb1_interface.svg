@@ -18,7 +18,34 @@
    inkscape:version="0.91 r13725"
    sodipodi:docname="satb1_interface.svg">
   <defs
-     id="defs4" />
+     id="defs4">
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter22809"
+       x="-0.042774262"
+       width="1.0855485"
+       y="-0.10045417"
+       height="1.2009083">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.66084867"
+         id="feGaussianBlur22811" />
+    </filter>
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter22879"
+       x="-0.074430738"
+       width="1.1488615"
+       y="-0.13517123"
+       height="1.2703425">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.87362617"
+         id="feGaussianBlur22881" />
+    </filter>
+  </defs>
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -26,9 +53,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4"
-     inkscape:cx="469.11307"
-     inkscape:cy="190.53761"
+     inkscape:zoom="1.979899"
+     inkscape:cx="339.4956"
+     inkscape:cy="206.18247"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -36,7 +63,7 @@
      inkscape:window-width="1855"
      inkscape:window-height="1056"
      inkscape:window-x="65"
-     inkscape:window-y="65"
+     inkscape:window-y="24"
      inkscape:window-maximized="1"
      units="cm"
      fit-margin-left="0.2"
@@ -127,6 +154,28 @@
            id="tspan4165"
            x="363.05713"
            y="174.44814">V25</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:15px;line-height:125%;font-family:FreeSans;-inkscape-font-specification:'FreeSans Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ff8080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="400.38779"
+         y="255.85062"
+         id="text22883"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan22885"
+           x="400.38779"
+           y="255.85062">L114</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:15px;line-height:125%;font-family:FreeSans;-inkscape-font-specification:'FreeSans Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ff8080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="291.686"
+         y="272.79984"
+         id="text22893"
+         sodipodi:linespacing="125%"><tspan
+           sodipodi:role="line"
+           id="tspan22895"
+           x="291.686"
+           y="272.79984">C75</tspan></text>
     </g>
     <image
        y="64.387039"
@@ -207,5 +256,63 @@
          y="416.41959"
          x="621.58301"
          sodipodi:role="line">Other residues</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:15px;line-height:125%;font-family:FreeSans;-inkscape-font-specification:'FreeSans Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ff8080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="133.95639"
+       y="228.55611"
+       id="text4155-3"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4157-6"
+         x="133.95639"
+         y="228.55611">V25</tspan></text>
+    <path
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:15px;line-height:125%;font-family:FreeSans;-inkscape-font-specification:'FreeSans Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#353535;fill-opacity:0.47798741;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter22809)"
+       d="m 123.9668,295.15039 c 0.95567,5.10617 -3.211,15.33469 5.25,12.93555 -0.22512,-2.91539 7.78884,-10.08555 6.61328,-4.33594 -2.45909,6.18195 6.34071,4.53877 6.5293,3.00781 2.2532,2.76412 6.54481,1.40213 8.6582,0.3125 4.37327,4.03199 11.83521,-1.23351 9.3164,-6.72851 -0.54097,-3.29284 1.46251,-8.92611 -5.04101,-6.89063 -4.48773,1.16568 -13.63832,-3.13339 -13.32285,3.66058 2.17507,-3.19935 -4.32863,-5.84719 -5.42715,-2.02972 -1.75418,0.32502 -1.1275,-3.68654 -4.89649,-1.93164 -2.17529,0.79669 -8.7664,-1.86757 -7.67968,2 z"
+       id="text22783"
+       inkscape:connector-curvature="0" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text22779"
+       y="306.0853"
+       x="142.0376"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:15px;line-height:125%;font-family:FreeSans;-inkscape-font-specification:'FreeSans Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ff8080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="306.0853"
+         x="142.0376"
+         id="tspan22781"
+         sodipodi:role="line">F155</tspan></text>
+    <path
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:15px;line-height:125%;font-family:FreeSans;-inkscape-font-specification:'FreeSans Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#303030;fill-opacity:0.50632912;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;filter:url(#filter22879)"
+       d="m 181.00586,217.62109 c 0.95568,5.10618 -3.211,15.3347 5.25,12.93555 1.89573,-4.94892 -0.10706,0.15711 4.29102,0 3.08556,-1.09382 7.33936,1.9989 10.30859,-1.32226 1.92613,-1.41188 1.27895,-4.74691 1.71094,-6.01368 -3.69815,6.93377 7.07376,11.23614 6.09961,3.33594 0.8163,-4.78259 0.28758,-14.91762 -5.30274,-9.23242 -2.04773,1.84923 -3.81227,-2.4628 -6.4043,-1.62695 -2.61537,-0.30003 -3.96632,3.05675 -5.91015,0.34961 -3.1811,-0.72364 -8.49419,-1.18064 -10.04297,0.57421 l 0,1 z m 15.76758,7.48438 c 0.68611,0.0546 -0.43265,0.15475 0,0 z"
+       id="text22817"
+       inkscape:connector-curvature="0" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text22813"
+       y="228.55611"
+       x="195.57568"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:15px;line-height:125%;font-family:FreeSans;-inkscape-font-specification:'FreeSans Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ff8080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="228.55611"
+         x="195.57568"
+         id="tspan22815"
+         sodipodi:role="line">R61</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text22887"
+       y="361.41324"
+       x="326.63492"
+       style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:15px;line-height:125%;font-family:FreeSans;-inkscape-font-specification:'FreeSans Semi-Bold';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#ff8080;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="361.41324"
+         x="326.63492"
+         id="tspan22889"
+         sodipodi:role="line">Q126</tspan><tspan
+         y="380.16324"
+         x="326.63492"
+         sodipodi:role="line"
+         id="tspan22891">P128</tspan></text>
   </g>
 </svg>
