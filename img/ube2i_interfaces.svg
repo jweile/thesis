@@ -110,6 +110,22 @@
          id="path77738"
          inkscape:connector-curvature="0" />
     </clipPath>
+    <clipPath
+       id="clipPath7938"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         inkscape:connector-curvature="0"
+         id="path7940"
+         d="m 59.04,73.44 558.72,0 0,299.52 -558.72,0 0,-299.52 z" />
+    </clipPath>
+    <clipPath
+       id="clipPath15238"
+       clipPathUnits="userSpaceOnUse">
+      <path
+         inkscape:connector-curvature="0"
+         id="path15240"
+         d="m 59.04,73.44 558.72,0 0,299.52 -558.72,0 0,-299.52 z" />
+    </clipPath>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -119,8 +135,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="537.4505"
-     inkscape:cy="398.58836"
+     inkscape:cx="416.42807"
+     inkscape:cy="399.08899"
      inkscape:document-units="cm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -133,7 +149,9 @@
      fit-margin-top="1"
      fit-margin-left="1"
      fit-margin-right="1"
-     fit-margin-bottom="1" />
+     fit-margin-bottom="1"
+     showguides="true"
+     inkscape:guide-bbox="true" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -16566,7 +16584,7 @@
          sodipodi:role="line"
          y="807.06915"
          x="254.31729"
-         id="tspan176829">noncovalent</tspan>
+         id="tspan176829">non-covalent</tspan>
     </text>
     <text
        y="788.31915"
@@ -16626,14 +16644,19 @@
     </text>
     <text
        y="788.31915"
-       x="698.98242"
+       x="717.59485"
        id="text141235"
-       style="font-variant:normal;font-weight:normal;font-size:15px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+       style="font-variant:normal;font-weight:normal;font-size:15px;font-family:Helvetica;-inkscape-font-specification:Helvetica;text-align:center;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
       <tspan
          id="tspan141237"
          sodipodi:role="line"
-         y="788.31915"
-         x="698.98242 709.81244 718.1524 726.49243">None</tspan>
+         x="717.59485"
+         y="788.31915">Non-interface</tspan>
+      <tspan
+         sodipodi:role="line"
+         x="717.59485"
+         y="807.06915"
+         id="tspan41348">Surface</tspan>
     </text>
     <path
        d="m 90.569911,710.26917 698.399999,0"
@@ -16750,66 +16773,6 @@
        style="fill:none;stroke:#4d4d4d;stroke-width:0.9375;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
        id="path141293"
        inkscape:connector-curvature="0" />
-    <path
-       d="m 162.63241,467.60667 0,-11.55 92.375,0 0,11.55"
-       style="fill:none;stroke:#000000;stroke-width:0.9375;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-       id="path141295"
-       inkscape:connector-curvature="0" />
-    <text
-       style="font-variant:normal;font-weight:normal;font-size:21.25px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-       id="text141297"
-       x="204.6824"
-       y="456.70667">
-      <tspan
-         x="204.6824"
-         y="456.70667"
-         id="tspan141299">*</tspan>
-    </text>
-    <path
-       d="m 162.63241,444.49417 0,-11.55 184.7625,0 0,11.55"
-       style="fill:none;stroke:#000000;stroke-width:0.9375;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-       id="path141301"
-       inkscape:connector-curvature="0" />
-    <text
-       style="font-variant:normal;font-weight:normal;font-size:21.25px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-       id="text141303"
-       x="250.8699"
-       y="433.59418">
-      <tspan
-         x="250.8699"
-         y="433.59418"
-         id="tspan141305">*</tspan>
-    </text>
-    <path
-       d="m 347.39491,467.60667 0,-11.55 92.375,0 0,11.55"
-       style="fill:none;stroke:#000000;stroke-width:0.9375;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-       id="path141307"
-       inkscape:connector-curvature="0" />
-    <text
-       style="font-variant:normal;font-weight:normal;font-size:21.25px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-       id="text141309"
-       x="389.44492"
-       y="456.70667">
-      <tspan
-         x="389.44492"
-         y="456.70667"
-         id="tspan141311">*</tspan>
-    </text>
-    <path
-       d="m 624.53241,444.49417 0,-11.55 92.375,0 0,11.55"
-       style="fill:none;stroke:#000000;stroke-width:0.9375;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
-       id="path141313"
-       inkscape:connector-curvature="0" />
-    <text
-       style="font-variant:normal;font-weight:normal;font-size:21.25px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none"
-       id="text141315"
-       x="666.59491"
-       y="433.59418">
-      <tspan
-         x="666.59491"
-         y="433.59418"
-         id="tspan141317">*</tspan>
-    </text>
     <image
        y="77.578911"
        x="415.80426"
@@ -17096,5 +17059,395 @@
        height="12.329403"
        x="183.36232"
        y="-763.78766" />
+    <g
+       id="g41271"
+       transform="translate(-971.53875,99.844998)">
+      <path
+         inkscape:connector-curvature="0"
+         id="path15288"
+         style="fill:none;stroke:#000000;stroke-width:0.9375;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         d="m 1134.133,375.84727 0,-11.55 92.375,0 0,11.55" />
+      <text
+         y="358.79727"
+         x="1140.1331"
+         id="text15290"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15292"
+           y="358.79727"
+           x="1140.1331">P</tspan>
+      </text>
+      <text
+         y="358.79727"
+         x="1151.358"
+         id="text15294"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Symbol;-inkscape-font-specification:Symbol;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15296"
+           y="358.79727"
+           x="1151.358">=</tspan>
+      </text>
+      <text
+         y="358.79727"
+         x="1161.1205"
+         id="text15298"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15300"
+           sodipodi:role="line"
+           y="358.79727"
+           x="1161.1205 1168.0706 1171.5455 1178.4955">7.99</tspan>
+      </text>
+      <text
+         y="358.79727"
+         x="1187.7581"
+         id="text15302"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Symbol;-inkscape-font-specification:Symbol;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15304"
+           y="358.79727"
+           x="1187.7581">×</tspan>
+      </text>
+      <text
+         y="358.79727"
+         x="1196.933"
+         id="text15306"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15308"
+           sodipodi:role="line"
+           y="358.79727"
+           x="1196.933 1203.8831">10</tspan>
+      </text>
+      <text
+         y="352.58475"
+         x="1210.833"
+         id="text15310"
+         style="font-variant:normal;font-weight:normal;font-size:8.75px;font-family:Symbol;-inkscape-font-specification:Symbol;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15312"
+           y="352.58475"
+           x="1210.833">−</tspan>
+      </text>
+      <text
+         y="352.58475"
+         x="1215.6331"
+         id="text15314"
+         style="font-variant:normal;font-weight:normal;font-size:8.75px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15316"
+           y="352.58475"
+           x="1215.6331">4</tspan>
+      </text>
+      <path
+         inkscape:connector-curvature="0"
+         id="path15318"
+         style="fill:none;stroke:#000000;stroke-width:0.9375;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         d="m 1134.133,352.73477 0,-11.55 182.9125,0 0,11.55" />
+      <text
+         y="335.68475"
+         x="1185.3955"
+         id="text15320"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15322"
+           y="335.68475"
+           x="1185.3955">P</tspan>
+      </text>
+      <text
+         y="335.68475"
+         x="1196.6331"
+         id="text15324"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Symbol;-inkscape-font-specification:Symbol;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15326"
+           y="335.68475"
+           x="1196.6331">=</tspan>
+      </text>
+      <text
+         y="335.68475"
+         x="1206.3831"
+         id="text15328"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15330"
+           sodipodi:role="line"
+           y="335.68475"
+           x="1206.3831 1213.333 1216.808 1223.7581">3.28</tspan>
+      </text>
+      <text
+         y="335.68475"
+         x="1233.0205"
+         id="text15332"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Symbol;-inkscape-font-specification:Symbol;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15334"
+           y="335.68475"
+           x="1233.0205">×</tspan>
+      </text>
+      <text
+         y="335.68475"
+         x="1242.1956"
+         id="text15336"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15338"
+           sodipodi:role="line"
+           y="335.68475"
+           x="1242.1956 1249.1455">10</tspan>
+      </text>
+      <text
+         y="329.47226"
+         x="1256.0955"
+         id="text15340"
+         style="font-variant:normal;font-weight:normal;font-size:8.75px;font-family:Symbol;-inkscape-font-specification:Symbol;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15342"
+           y="329.47226"
+           x="1256.0955">−</tspan>
+      </text>
+      <text
+         y="329.47226"
+         x="1260.908"
+         id="text15344"
+         style="font-variant:normal;font-weight:normal;font-size:8.75px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15346"
+           y="329.47226"
+           x="1260.908">3</tspan>
+      </text>
+      <path
+         inkscape:connector-curvature="0"
+         id="path15348"
+         style="fill:none;stroke:#000000;stroke-width:0.9375;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         d="m 1318.8955,375.84727 0,-11.55 92.375,0 0,11.55" />
+      <text
+         y="358.73477"
+         x="1324.8955"
+         id="text15350"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15352"
+           y="358.73477"
+           x="1324.8955">P</tspan>
+      </text>
+      <text
+         y="358.73477"
+         x="1336.1205"
+         id="text15354"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Symbol;-inkscape-font-specification:Symbol;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15356"
+           y="358.73477"
+           x="1336.1205">=</tspan>
+      </text>
+      <text
+         y="358.73477"
+         x="1345.8831"
+         id="text15358"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15360"
+           sodipodi:role="line"
+           y="358.73477"
+           x="1345.8831 1352.833 1356.308 1363.2581">1.68</tspan>
+      </text>
+      <text
+         y="358.73477"
+         x="1372.5205"
+         id="text15362"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Symbol;-inkscape-font-specification:Symbol;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15364"
+           y="358.73477"
+           x="1372.5205">×</tspan>
+      </text>
+      <text
+         y="358.73477"
+         x="1381.6956"
+         id="text15366"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15368"
+           sodipodi:role="line"
+           y="358.73477"
+           x="1381.6956 1388.6455">10</tspan>
+      </text>
+      <text
+         y="352.52225"
+         x="1395.5955"
+         id="text15370"
+         style="font-variant:normal;font-weight:normal;font-size:8.75px;font-family:Symbol;-inkscape-font-specification:Symbol;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15372"
+           y="352.52225"
+           x="1395.5955">−</tspan>
+      </text>
+      <text
+         y="352.52225"
+         x="1400.3955"
+         id="text15374"
+         style="font-variant:normal;font-weight:normal;font-size:8.75px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15376"
+           y="352.52225"
+           x="1400.3955">5</tspan>
+      </text>
+      <path
+         inkscape:connector-curvature="0"
+         id="path15378"
+         style="fill:none;stroke:#000000;stroke-width:0.9375;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         d="m 1597.883,352.73477 0,-11.55 90.525,0 0,11.55" />
+      <text
+         y="335.68475"
+         x="1600.533"
+         id="text15380"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15382"
+           y="335.68475"
+           x="1600.533">P</tspan>
+      </text>
+      <text
+         y="335.68475"
+         x="1611.7581"
+         id="text15384"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Symbol;-inkscape-font-specification:Symbol;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15386"
+           y="335.68475"
+           x="1611.7581">=</tspan>
+      </text>
+      <text
+         y="335.68475"
+         x="1621.5205"
+         id="text15388"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15390"
+           sodipodi:role="line"
+           y="335.68475"
+           x="1621.5205 1628.4705 1631.9456 1638.8955">6.87</tspan>
+      </text>
+      <text
+         y="335.68475"
+         x="1648.158"
+         id="text15392"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Symbol;-inkscape-font-specification:Symbol;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15394"
+           y="335.68475"
+           x="1648.158">×</tspan>
+      </text>
+      <text
+         y="335.68475"
+         x="1657.333"
+         id="text15396"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15398"
+           sodipodi:role="line"
+           y="335.68475"
+           x="1657.333 1664.283">10</tspan>
+      </text>
+      <text
+         y="329.47226"
+         x="1671.233"
+         id="text15400"
+         style="font-variant:normal;font-weight:normal;font-size:8.75px;font-family:Symbol;-inkscape-font-specification:Symbol;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15402"
+           y="329.47226"
+           x="1671.233">−</tspan>
+      </text>
+      <text
+         y="329.47226"
+         x="1676.033"
+         id="text15404"
+         style="font-variant:normal;font-weight:normal;font-size:8.75px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15406"
+           sodipodi:role="line"
+           y="329.47226"
+           x="1676.033 1680.8979">21</tspan>
+      </text>
+      <path
+         inkscape:connector-curvature="0"
+         id="path15408"
+         style="fill:none;stroke:#000000;stroke-width:0.9375;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+         d="m 1320.733,352.73477 0,-11.55 273.45,0 0,11.55" />
+      <text
+         y="335.68475"
+         x="1417.2705"
+         id="text15410"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15412"
+           y="335.68475"
+           x="1417.2705">P</tspan>
+      </text>
+      <text
+         y="335.68475"
+         x="1428.5081"
+         id="text15414"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Symbol;-inkscape-font-specification:Symbol;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15416"
+           y="335.68475"
+           x="1428.5081">=</tspan>
+      </text>
+      <text
+         y="335.68475"
+         x="1438.2581"
+         id="text15418"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15420"
+           sodipodi:role="line"
+           y="335.68475"
+           x="1438.2581 1445.208 1448.683 1455.6331">4.28</tspan>
+      </text>
+      <text
+         y="335.68475"
+         x="1464.8955"
+         id="text15422"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Symbol;-inkscape-font-specification:Symbol;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15424"
+           y="335.68475"
+           x="1464.8955">×</tspan>
+      </text>
+      <text
+         y="335.68475"
+         x="1474.0706"
+         id="text15426"
+         style="font-variant:normal;font-weight:normal;font-size:12.5px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15428"
+           sodipodi:role="line"
+           y="335.68475"
+           x="1474.0706 1481.0205">10</tspan>
+      </text>
+      <text
+         y="329.47226"
+         x="1487.9705"
+         id="text15430"
+         style="font-variant:normal;font-weight:normal;font-size:8.75px;font-family:Symbol;-inkscape-font-specification:Symbol;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15432"
+           y="329.47226"
+           x="1487.9705">−</tspan>
+      </text>
+      <text
+         y="329.47226"
+         x="1492.783"
+         id="text15434"
+         style="font-variant:normal;font-weight:normal;font-size:8.75px;font-family:Helvetica;-inkscape-font-specification:Helvetica;writing-mode:lr-tb;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none">
+        <tspan
+           id="tspan15436"
+           y="329.47226"
+           x="1492.783">8</tspan>
+      </text>
+    </g>
   </g>
 </svg>
