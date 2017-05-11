@@ -26,7 +26,7 @@ In the following sections, I will first describe a version of the framework call
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=\textwidth]{img/framework_flowchart.pdf}
-	\caption{An overview of the Deep Mutational Scanning Framework. Step 1: Using mutagenesis via POPCode and oxidized nucleotide PCR, a pool of variant ORFs is created. Step 2: A library is generated via en-masse gateway cloning. Depending on the downstream sequencing procedure either plain or barcoded expression vectors are used. Step 3: Clones compete with each other for growth under selective and control conditions. Step 4: In case of BarSeq, barcodes are sequenced and counted. In case of TileSeq, individual tiles within the ORF are amplified used in paired-end sequencing. Step 5: Machine Learning methods are used to impute the effects of missing variants. Step 6: Machine learning predictions are also used to support less confidently measured variants. }
+	\caption{An overview of the Deep Mutational Scanning Framework. Step 1: Using mutagenesis via POPCode and oxidized nucleotide PCR, a pool of variant ORFs is created. Step 2: A library is generated via en-masse gateway cloning. Depending on the downstream sequencing procedure either plain or barcoded expression vectors are used. Step 3: Clones compete with each other for growth under selective and control conditions. Step 4: In case of BarSeq, barcodes are sequenced and counted. In case of TileSeq, individual tiles within the ORF are amplified used in paired-end sequencing. Step 5: Machine Learning methods are used to impute the effects of missing variants. Step 6: Machine learning predictions are also used to support less confidently measured variants. (Incl. illustrations by \cite{kossin_thermometer_2004,bons_computer_2005})}
 	\label{fig:framework}
 \end{figure}
 
@@ -56,8 +56,8 @@ In some cases, a moderate deviation from the average in melting temperature for 
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=\textwidth]{img/popcode_schema.pdf}%TODO: should be direct BP-LR cloning
-	\caption{POPCode mutagenesis and library generation. A pool of codon-denerate oligos is hybridized to a uracil-doped template, gaps between oligos are closed via non-strand-displacing polymerase, and the backbone sealed. Uracil-doped template is degraded to enrich for mutants. After mutagenesis, Gateway attB sites are added, followed by BP+LR cloning into barcoded vectors and transformation into bacteria. Finally, colonies are picked and arrayed.}
+	\includegraphics[width=\textwidth]{img/popcode_schema.pdf}
+	\caption{POPCode mutagenesis and library generation. A pool of codon-denerate oligos is hybridized to a uracil-doped template, gaps between oligos are closed via non-strand-displacing polymerase, and the backbone sealed. Uracil-doped template is degraded to enrich for mutants. After mutagenesis, Gateway attB sites are added, followed by BP+LR cloning into barcoded vectors and transformation into bacteria. Finally, colonies are picked and arrayed. (Incl. illustration by~\cite{pire_stack_2012})}
 	\label{fig:popcode_schema}
 \end{figure}
 
